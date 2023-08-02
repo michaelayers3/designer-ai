@@ -15,5 +15,10 @@
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^5.1.0"
+  },
+  "dependencies": {
+    "@apollo/server": "^4.9.0",
+    "bcrypt": "^5.1.0",
+    "graphql": "^16.7.1"
   }
 }

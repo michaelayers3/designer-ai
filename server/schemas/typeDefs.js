@@ -24,6 +24,13 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  type Wireframe {
+    _id: ID
+    wireframeText: String
+    createdAt: String
+  }
+  
+
   type Auth {
     token: ID!
     user: User
@@ -41,9 +48,9 @@ const typeDefs = gql`
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
     removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
+    
+    addWireFrame(wireframeText: String!): Wireframe
   }
 `;
 
