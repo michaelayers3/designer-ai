@@ -9,20 +9,8 @@ const typeDefs = gql`
     thoughts: [Thought]!
   }
 
-  type Thought {
-    _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
 
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
-    createdAt: String
-  }
+  
 
   type Wireframe {
     _id: ID
@@ -39,7 +27,9 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
+
+    wireframes(_id: String, wireframeText: String, createdAt: String): [Wireframe]
+    
     thought(thoughtId: ID!): Thought
     me: User
   }

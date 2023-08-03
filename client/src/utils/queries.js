@@ -6,21 +6,20 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      wireframes {
         _id
-        thoughtText
+        wireframeText
         createdAt
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_WIREFRAMES = gql`
+  query getWireFrames {
+    wireframes {
       _id
-      thoughtText
-      thoughtAuthor
+      wireframeText
       createdAt
     }
   }
