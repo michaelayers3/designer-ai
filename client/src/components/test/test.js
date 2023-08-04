@@ -5,8 +5,10 @@ import { ADD_WIREFRAME } from '../../utils/mutations';
 // import { set } from 'mongoose';
 
 const WireframeForm = () => {
-  const [wireframeText, setWireframeText] = useState('');
-  const [formState, setFormState] = useState({ wireframeText: '' });
+  const [userText, setUserText] = useState('');
+  const [apiResponseText, setApiResponseText] = useState('');
+  const [createdAt, setCreatedAt] = useState('');
+  const [formState, setFormState] = useState({ userText: '' });
   const [addWireframe, { error, data }] = useMutation(ADD_WIREFRAME);
 
   const handleFormSubmit = async (event) => {
@@ -15,14 +17,19 @@ const WireframeForm = () => {
     try {
       const { data } = await addWireframe({
         variables: {
-          wireframeText
+          userText
         },
       });
+      // const apiResponseText = data.addWireFrame.apiResponseText;
 
-      setWireframeText('');
+      setUserText('');
     } catch (err) {
+      
       console.log('poo');
-      console.log(wireframeText); 
+      console.log(userText); 
+      // console.log('response:', response.data)
+      console.log(apiResponseText);
+      console.log(createdAt);
       console.log(err);
     }
   };
@@ -30,8 +37,8 @@ const WireframeForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'wireframeText' && value.length <= 280) {
-      setWireframeText(value);
+    if (name === 'userText' && value.length <= 280) {
+      setUserText(value);
       // setFormState({ ...formState, wireframeText: value });
     }
   };
@@ -41,8 +48,8 @@ const WireframeForm = () => {
       <form onSubmit={handleFormSubmit}>
         <textarea
           placeholder="Here's a new wireframe..."
-          value={wireframeText}
-          name = 'wireframeText'
+          value={userText}
+          name = 'userText'
           className="form-input col-12 col-md-9"
           onChange={handleChange}
         ></textarea>

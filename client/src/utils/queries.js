@@ -8,7 +8,7 @@ export const QUERY_USER = gql`
       email
       wireframes {
         _id
-        wireframeText
+        userText
         createdAt
       }
     }
@@ -19,7 +19,8 @@ export const QUERY_WIREFRAMES = gql`
   query getWireFrames {
     wireframes {
       _id
-      wireframeText
+      userText
+      apiResponseText
       createdAt
     }
   }

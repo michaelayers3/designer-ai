@@ -25,10 +25,11 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WIREFRAME = gql`
-  mutation addWireFrame($wireframeText: String!) {
-    addWireFrame(wireframeText: $wireframeText) {
+  mutation addWireFrame($userText: String, $apiResponseText: String, $createdAt: String) {
+    addWireFrame(userText: $userText, apiResponseText: $apiResponseText, createdAt: $createdAt) {
       _id
-      wireframeText
+      userText
+      apiResponseText
       createdAt
     }
   }

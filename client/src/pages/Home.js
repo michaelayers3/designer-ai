@@ -6,11 +6,11 @@ import { QUERY_WIREFRAMES } from '../utils/queries';
 const Home = () => {
   
   const { loading, data } = useQuery(QUERY_WIREFRAMES);
-  const wireframeText = data?.wireframeText || [];
-  const createdAt = data?.createdAt || [];
+  const wireframes = data?.wireframes || [];
+  
 
   return (
-    <main>
+    <main> 
       <div className="flex-row justify-center">
         <div
           className="col-12 col-md-10 mb-3 p-3"
@@ -21,8 +21,7 @@ const Home = () => {
         <div className="col-12 col-md-8 mb-3">
           <WireframeForm />
           <RequestedList
-            wireframeText={wireframeText}
-            createdAt={createdAt}
+            wireframes={wireframes}
            />
         </div>
       </div>
