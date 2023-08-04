@@ -1,20 +1,18 @@
 import React from 'react';
 
-// Import the `useParams()` hook
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import CommentList from '../components/CommentList';
 import CommentForm from '../components/CommentForm';
+import Header from '../components/Header';
 
 import { QUERY_SINGLE_THOUGHT } from '../utils/queries';
 
 const SingleThought = () => {
-  // Use `useParams()` to retrieve value of the route parameter `:profileId`
   const { thoughtId } = useParams();
 
   const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
-    // pass URL parameter
     variables: { thoughtId: thoughtId },
   });
 
@@ -25,6 +23,7 @@ const SingleThought = () => {
   }
   return (
     <div className="my-3">
+      <Header />
       <h3 className="card-header bg-dark text-light p-2 m-0">
         {thought.thoughtAuthor} <br />
         <span style={{ fontSize: '1rem' }}>

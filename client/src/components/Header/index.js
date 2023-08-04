@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
+import { HeaderContainer, HeaderSubtitle, HeaderTitle, LoginButton, ProfileButton, SignupButton, LogoutButton, ButtonContainer, HeaderTitleContainer } from './HeaderStyle';
 
 const Header = () => {
   const logout = (event) => {
@@ -9,37 +10,35 @@ const Header = () => {
     Auth.logout();
   };
   return (
-    <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
-      <div className="container flex-row justify-space-between-lg justify-center align-center">
-        <div>
-          <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+    <HeaderContainer>
+        <HeaderTitleContainer>
+          <Link to="/">
+            <HeaderTitle>DESIGNER AI</HeaderTitle>
           </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
-        </div>
-        <div>
+          <HeaderSubtitle>VIRTUAL WEBSITE BUILDER</HeaderSubtitle>
+        </HeaderTitleContainer>
+        <ButtonContainer>
           {Auth.loggedIn() ? (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {Auth.getProfile().data.username}'s profile
+              <Link to="/me">
+                <ProfileButton>View Designs</ProfileButton>
               </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
+              <LogoutButton onClick={logout}>
                 Logout
-              </button>
+              </LogoutButton>
             </>
           ) : (
             <>
-              <Link className="btn btn-lg btn-info m-2" to="/login">
-                Login
+              <Link to="/login">
+                <LoginButton>Login</LoginButton>
               </Link>
-              <Link className="btn btn-lg btn-light m-2" to="/signup">
-                Signup
+              <Link to="/signup">
+                <SignupButton>Sign Up</SignupButton>
               </Link>
             </>
           )}
-        </div>
-      </div>
-    </header>
+        </ButtonContainer>
+    </HeaderContainer>
   );
 };
 

@@ -4,6 +4,7 @@ import { useQuery } from '@apollo/client';
 
 import ThoughtForm from '../components/ThoughtForm';
 import ThoughtList from '../components/ThoughtList';
+import Header2 from "../components/Header2"
 
 import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
@@ -37,6 +38,7 @@ const Profile = () => {
 
   return (
     <div>
+      <Header2 />
       <div className="flex-row justify-center mb-3">
         <h2 className="col-12 col-md-10 bg-dark text-light p-3 mb-5">
           Viewing {userParam ? `${user.username}'s` : 'your'} profile.
