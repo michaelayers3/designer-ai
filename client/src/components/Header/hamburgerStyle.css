@@ -1,3 +1,9 @@
+:root {
+    --dark-color: #36286B;
+    --mid-color: #4A359B;
+    --light-color: #AEA3D9;
+}
+
 .toggler{
   /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
     z-index:3;
@@ -17,7 +23,7 @@
     right: 0;
     height: 100px;
     width: 100px;
-    padding: 0.6rem;
+    padding: 0.4rem;
   
   /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
   
@@ -31,10 +37,10 @@
 .hamburger > div{
     z-index: 2;
     position: relative;
-    top: 0;
-    right: 0;
-    background: black;
-    height: 2px;
+    top: 10px;
+    right: 10px;
+    background: var(--mid-color);
+    height: 10px;
     width: 60%;
     transition: all  0.4s ease;
 }
@@ -47,15 +53,15 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     z-index: 1;
     content: '';
     position: absolute;
-    top: -10px;
-    background: black;
+    top: -20px;
+    background: var(--mid-color);
     width: 100%;
-    height: 2px;
+    height: 10px;
     transition: all  0.4s ease;
 }
 
 .hamburger > div::after{
-    top: 10px;
+    top: 20px;
 }
 
 /* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
@@ -67,7 +73,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 .toggler:checked + .hamburger > div::before{
     top: 0;
     transform: rotate(45deg);
-    background: black;
+    background: var(--mid-color);
 }
 
 /* AND ROTATING THE TOP AND BOTTOM LINES :  */
@@ -76,7 +82,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     z-index: 2;
     top: 0;
     transform: rotate(135deg);
-    background: black;
+    background: var(--mid-color);
 }
 
 
@@ -85,22 +91,28 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 .menu{
     z-index: 1;
     position: absolute;
-    background: rgba(255,255,255, 90%);
+    background: rgba(255,255,255, 100%);
     width: 0%;
     height: 100vh;
     right: 0px;
     top: 0px;
     /* APPLYING TRANSITION TO THE MENU :  */
     
-    transition: all 0.4s ease;
+    transition: all 0.2s ease;
 }
 
 /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
 
 .toggler:checked ~ .menu{
     display: flex;
-    border: 8px solid #36286B;
-    width: 25%;
+    border: 8px solid var(--dark-color);
+    width: 500px;
+}
+
+@media (max-width: 479px) {
+    .toggler:checked ~ .menu {
+        width: 100vw;
+    }
 }
 
 

@@ -40,17 +40,17 @@ const Home = () => {
               <Link to="/me">
                 <LightButton>View Designs</LightButton>
               </Link>
-              <Link to="/me">
+              <Link to="/design">
                 <LightButton>New Design</LightButton>
               </Link>
-              <DarkButton onClick={logout}>Logout</DarkButton>
+              <DarkButton onClick={logout}>Log Out</DarkButton>
             </>
           ) : (
             <>
               {!showLogin && !showSignup && (
                 <>
                   {/* Set the state variable to show the Login component */}
-                  <LightButton onClick={() => setShowLogin(true)}>Login</LightButton>
+                  <LightButton onClick={() => setShowLogin(true)}>Log In</LightButton>
                   {/* Set the state variable to show the Signup component */}
                   <DarkButton onClick={() => setShowSignup(true)}>Sign Up</DarkButton>
                 </>

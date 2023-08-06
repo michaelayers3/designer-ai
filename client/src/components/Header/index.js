@@ -1,43 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import Auth from '../../utils/auth';
-import { HeaderContainer, HeaderSubtitle, HeaderTitle, LoginButton, ProfileButton, SignupButton, LogoutButton, ButtonContainer, HeaderTitleContainer } from './HeaderStyle';
+import Auth from "../../utils/auth";
+import {
+  HeaderContainer,
+  HeaderTitle,
+  ButtonContainer,
+  HeaderTitleContainer,
+  DarkButton,
+  MenuTitle,
+  LogoutButton,
+  MenuButtons,
+} from "./HeaderStyle";
+import "./hamburgerStyle.css";
 
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
     Auth.logout();
   };
+
   return (
     <HeaderContainer>
-        <HeaderTitleContainer>
-          <Link to="/">
-            <HeaderTitle>DESIGNER AI</HeaderTitle>
-          </Link>
-          <HeaderSubtitle>VIRTUAL WEBSITE BUILDER</HeaderSubtitle>
-        </HeaderTitleContainer>
-        <ButtonContainer>
-          {Auth.loggedIn() ? (
-            <>
-              <Link to="/me">
-                <ProfileButton>View Designs</ProfileButton>
-              </Link>
-              <LogoutButton onClick={logout}>
-                Logout
-              </LogoutButton>
-            </>
-          ) : (
-            <>
-              <Link to="/login">
-                <LoginButton>Login</LoginButton>
-              </Link>
-              <Link to="/signup">
-                <SignupButton>Sign Up</SignupButton>
-              </Link>
-            </>
-          )}
-        </ButtonContainer>
+      <HeaderTitleContainer>
+        <HeaderTitle to="/">DESIGNER AI</HeaderTitle>
+      </HeaderTitleContainer>
+      <div>
+        <input type="checkbox" class="toggler" />
+        <div class="hamburger">
+          <div></div>
+        </div>
+        <div class="menu">
+          <div>
+            <ul>
+              {Auth.loggedIn() ? (
+                <>
+                  <MenuTitle>
+                    <h1>{Auth.getProfile().data.username}</h1>
+                    <LogoutButton onClick={logout}>Log Out</LogoutButton>
+                  <ButtonContainer>
+                    <MenuButtons to="/design">Create A Design</MenuButtons>
+                    <MenuButtons to="/me">Saved Designs</MenuButtons>
+                  </ButtonContainer>
+                  </MenuTitle>
+                </>
+              ) : (
+                <ButtonContainer>
+                  <Link to="/">
+                    <DarkButton>Log In</DarkButton>
+                  </Link>
+                </ButtonContainer>
+              )}
+            </ul>
+          </div>
+        </div>
+      </div>
     </HeaderContainer>
   );
 };

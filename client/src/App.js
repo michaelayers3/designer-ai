@@ -9,8 +9,9 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Landing from './pages/Landing/Landing';
-import SingleThought from './pages/SingleThought';
-import Profile from './pages/Profile';
+import NewDesign from './pages/Design/NewDesign';
+import EditDesign from './pages/Design/EditDesign';
+import Profile from './pages/Profile/Profile';
 // import Header from './components/Header';
 
 // Construct our main GraphQL API endpoint
@@ -52,9 +53,13 @@ function App() {
                 element={<Profile />}
               />
               <Route 
-                path="/thoughts/:thoughtId"
-                element={<SingleThought />}
+                path="/design"
+                element={<NewDesign />}
               />
+              <Route
+                path="/thoughts/:thoughtId"
+                element={<EditDesign />}
+                />
             </Routes>
         </div>
       </Router>

@@ -11,7 +11,7 @@ const openai = new OpenAIApi(new Configuration({
 
 openai.createChatCompletion({
 	model: "gpt-3.5-turbo",
-	messages: [{role: "user", content: "Can you create a basic html website for me. I'd like a navbar and some interesting styling with color. Please respond with just the code, no other comments or text from you please."}]
+	messages: [{role: "user", content: "Can you create a basic html website for me. Please respond with just the code, no other comments or text from you please."}]
 })
 .then(res => {
 	console.log(res.data.choices[0].message.content)

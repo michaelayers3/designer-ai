@@ -1,15 +1,22 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../../utils/mutations';
+import { ADD_USER } from '../../utils/mutations';
 
 import Auth from '../../utils/auth';
 
-const Login = (props) => {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+import { FormContainer, FormTitle, SubmitButton } from "./SignupStyle";
 
-  // update state based on form input changes
+
+const Signup = () => {
+  const [formState, setFormState] = useState({
+    username: '',
+    email: '',
+    password: '',
+  });
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -22,28 +29,29 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+
     try {
-      const { data } = await login({
+      const { data } = await addUser({
         variables: { ...formState },
       });
 
-      Auth.login(data.login.token);
+      Auth.login(data.addUser.token);
     } catch (e) {
       console.error(e);
     }
-
-    setFormState({
-      email: '',
-      password: '',
-    });
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-        <div className="card">
-          <h4 className="card-header bg-dark text-light p-2">Login</h4>
-          <div className="card-body">
-              <form onSubmit={handleFormSubmit}>
+      <FormContainer onSubmit={handleFormSubmit}>
+        <FormTitle>Sign Up</FormTitle>
+        <input
+                  className="form-input"
+                  placeholder="Your username"
+                  name="username"
+                  type="text"
+                  value={formState.name}
+                  onChange={handleChange}
+                />
                 <input
                   className="form-input"
                   placeholder="Your email"
@@ -60,24 +68,16 @@ const Login = (props) => {
                   value={formState.password}
                   onChange={handleChange}
                 />
-                <button
-                  className="btn btn-block btn-primary"
+                <SubmitButton
                   style={{ cursor: 'pointer' }}
                   type="submit"
                 >
                   Submit
-                </button>
-              </form>
-
-            {error && (
-              <div className="my-3 p-3 bg-danger text-white">
-                {error.message}
-              </div>
-            )}
-          </div>
-        </div>
-    </main>
-  );
+                </SubmitButton>
+  
+        {error && <div className="my-3 p-3 bg-danger text-white">{error.message}</div>}
+      </FormContainer>
+    );
 };
 
-export default Login;
+export default Signup;
