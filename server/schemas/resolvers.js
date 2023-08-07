@@ -47,20 +47,22 @@ const resolvers = {
 
     //   return { token, user };
     // },
-    addWireFrame: async (parent, { userText, apiResponseText, createdAt }, context) => {
+    addWireFrame: async (parent, { userText, createdAt }, context) => {
       // if (context.user) {
         const messages = [
           {role: 'user', content: userText}
         ];
           const completion = await getOpenAICompletion(messages);
-          const apiResponseText  = completion?.message?.content || 'No response from API';
-
+          
+          const apiResponseText  = completion?.data?.choices|| 'No response from API';
+          
         const wireframe = await Wireframe.create({
           userText: userText,
           apiResponseText: apiResponseText,
           createdAt: createdAt,
         });
-        console.log(apiResponseText)
+       
+        console.log('test')
         return wireframe;
       
       // throw new AuthenticationError('You need to be logged in!');

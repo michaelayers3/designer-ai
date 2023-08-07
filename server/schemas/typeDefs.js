@@ -6,7 +6,7 @@ const typeDefs = gql`
   type Wireframe {
     _id: ID
     userText: String
-    apiResponseText: String
+    apiResponseText: [String]
     createdAt: String
   }
   
@@ -25,7 +25,7 @@ const typeDefs = gql`
     
     
     
-    addWireFrame(userText: String, apiResponseText: String, createdAt: String): Wireframe
+    addWireFrame(userText: String, apiResponseText: [String], createdAt: String): Wireframe
   }
 `;
 

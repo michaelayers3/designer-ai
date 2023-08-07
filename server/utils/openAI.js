@@ -2,7 +2,7 @@ const { response } = require("express");
 const { Configuration, OpenAIApi } = require("openai");
 const {config} = require('dotenv')
 
-const test = require('dotenv').config({path: '../.env'})
+const test = require('dotenv').config({path: './.env'})
 console.log(test)
 
 const openai = new OpenAIApi(new Configuration({
@@ -18,8 +18,8 @@ const getOpenAICompletion = async (messages) => {
       model: "gpt-3.5-turbo",
       messages
     });
-    console.log('response:', response.data)
-    console.log(response)
+  
+   console.log('here', response.data.choices)  
     return response.data.choices;
   } catch (error) {
     console.error("Error calling OpenAI API:", error);

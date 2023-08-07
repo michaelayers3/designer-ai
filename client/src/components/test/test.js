@@ -9,6 +9,7 @@ const WireframeForm = () => {
   const [apiResponseText, setApiResponseText] = useState('');
   const [createdAt, setCreatedAt] = useState('');
   const [formState, setFormState] = useState({ userText: '' });
+
   const [addWireframe, { error, data }] = useMutation(ADD_WIREFRAME);
 
   const handleFormSubmit = async (event) => {
@@ -17,19 +18,18 @@ const WireframeForm = () => {
     try {
       const { data } = await addWireframe({
         variables: {
-          userText
+          userText: userText,
+          apiResponseText: apiResponseText,
         },
       });
+      
+      setApiResponseText(data.addWireFrame.apiResponseText);
+      console.log('here:', setApiResponseText(data.addWireFrame.apiResponseText));
+      console.log('here2:', setApiResponseText(data.addWireFrame.apiResponseText.content));
       // const apiResponseText = data.addWireFrame.apiResponseText;
-
+      console.log('here:', data);
       setUserText('');
     } catch (err) {
-      
-      console.log('poo');
-      console.log(userText); 
-      // console.log('response:', response.data)
-      console.log(apiResponseText);
-      console.log(createdAt);
       console.log(err);
     }
   };
@@ -58,6 +58,10 @@ const WireframeForm = () => {
         </button>
       </form>
       {error && <div>Something went wrong...</div>}
+      <div>
+        <h3>API Response:</h3>
+        <p>{apiResponseText}</p>
+      </div>
     </div>
   );
 };
