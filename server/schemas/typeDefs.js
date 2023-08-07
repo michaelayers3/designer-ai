@@ -6,21 +6,18 @@ const typeDefs = gql`
     username: String
     email: String
     password: String
-    thoughts: [Thought]!
+    wireframes: [Wireframe]!
   }
 
-  type Thought {
+  type Wireframe {
     _id: ID
-    thoughtText: String
-    thoughtAuthor: String
-    createdAt: String
-    comments: [Comment]!
-  }
-
-  type Comment {
-    _id: ID
-    commentText: String
-    commentAuthor: String
+    websiteTitle: String
+    primaryColor: String
+    secondaryColor: String
+    websitePurpose: String
+    designStyle: String
+    htmlCode: String
+    wireframeAuthor: String
     createdAt: String
   }
 
@@ -32,19 +29,19 @@ const typeDefs = gql`
   type Query {
     users: [User]
     user(username: String!): User
-    thoughts(username: String): [Thought]
-    thought(thoughtId: ID!): Thought
+    wireframes(username: String): [Wireframe]
+    wireframe(wireframeId: ID!): Wireframe
     me: User
   }
 
   type Mutation {
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addThought(thoughtText: String!): Thought
-    addComment(thoughtId: ID!, commentText: String!): Thought
-    removeThought(thoughtId: ID!): Thought
-    removeComment(thoughtId: ID!, commentId: ID!): Thought
-  }
+    addWireframe(wireframeText: String!): Wireframe
+    removeWireframe(wireframeId: ID!): Wireframe
+    updateUser(username: String!, email: String!, password: String!): User
+    updateWireframe(wireframeId: ID!, wireframeText: String!): Wireframe
+    }
 `;
 
 module.exports = typeDefs;
