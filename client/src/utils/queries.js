@@ -1,60 +1,68 @@
 import { gql } from '@apollo/client';
 
+//Returns a user by username
+//It returns the user's username, email, password, and wireframes
 export const QUERY_USER = gql`
-  query user($username: String!) {
-    user(username: $username) {
+query User($username: String!) {
+  user(username: $username) {
+    _id
+    username
+    email
+    password
+    wireframes {
       _id
-      username
-      email
-      thoughts {
-        _id
-        thoughtText
-        createdAt
-      }
-    }
-  }
-`;
-
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
-      _id
-      thoughtText
-      thoughtAuthor
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      htmlCode
+      wireframeAuthor
       createdAt
     }
   }
+}
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
-      _id
-      thoughtText
-      thoughtAuthor
-      createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
-    }
+//Returns all wireframes of a specific user
+//Kind of redundant based on the above query
+export const QUERY_USER_WIREFRAMES = gql`
+query Wireframes($username: String) {
+  wireframes(username: $username) {
+    _id
+    websiteTitle
+    primaryColor
+    secondaryColor
+    websitePurpose
+    designStyle
+    htmlCode
+    wireframeAuthor
+    createdAt
   }
+}
 `;
 
+
+
+
+//Returns the data for the user that is currently logged in
+//This may be the only necesssary query
 export const QUERY_ME = gql`
-  query me {
-    me {
-      _id
-      username
-      email
-      thoughts {
-        _id
-        thoughtText
-        thoughtAuthor
-        createdAt
-      }
-    }
+me {
+  _id
+  username
+  email
+  password
+  wireframes {
+    _id
+    websiteTitle
+    primaryColor
+    secondaryColor
+    websitePurpose
+    designStyle
+    htmlCode
+    wireframeAuthor
+    createdAt
   }
+}
 `;
