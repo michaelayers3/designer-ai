@@ -47,26 +47,31 @@ const resolvers = {
 
     //   return { token, user };
     // },
-    addWireFrame: async (parent, { userText, createdAt }, context) => {
+    addWireFrame: async (parent, { userText,  createdAt }, context) => {
       // if (context.user) {
         const messages = [
           {role: 'user', content: userText}
         ];
           const completion = await getOpenAICompletion(messages);
-          
-          const apiResponseText  = completion?.data?.choices|| 'No response from API';
+          const apiResponseText = completion || 'Poop';
+          // const apiResponseText  = completion?.data?.choices|| 'No response from API';
           
         const wireframe = await Wireframe.create({
           userText: userText,
           apiResponseText: apiResponseText,
           createdAt: createdAt,
         });
-       
-        console.log('test')
+       console.log('ResolverPoo:',apiResponseText)
+       console.log('ResolverPoo1:',completion)
+       console.log('ResolverPoo2:', completion.data.choices)
+        console.log('userText:' ,userText)
+        console.log('apiResponseText:' ,apiResponseText)
+        console.log('Wireframe:' ,wireframe)
         return wireframe;
-      
-      // throw new AuthenticationError('You need to be logged in!');
-    },
+        
+        
+        // throw new AuthenticationError('You need to be logged in!');
+      },
 
     // removeThought: async (parent, { thoughtId }, context) => {
     //   if (context.user) {

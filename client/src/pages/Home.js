@@ -1,4 +1,5 @@
 import React from 'react';
+import {gql} from '@apollo/client'; 
 import { useQuery } from '@apollo/client';
 import WireframeForm from '../components/test/test';
 import RequestedList from '../components/RequestedList';
@@ -6,8 +7,9 @@ import { QUERY_WIREFRAMES } from '../utils/queries';
 const Home = () => {
   
   const { loading, data } = useQuery(QUERY_WIREFRAMES);
+  console.log('Home Poo:', data);
   const wireframes = data?.wireframes || [];
-  
+  console.log('Home Poo2:', wireframes);
 
   return (
     <main> 

@@ -19,15 +19,16 @@ const WireframeForm = () => {
       const { data } = await addWireframe({
         variables: {
           userText: userText,
-          apiResponseText: apiResponseText,
+          // apiResponseText: apiResponseText,
         },
       });
       
-      setApiResponseText(data.addWireFrame.apiResponseText);
-      console.log('here:', setApiResponseText(data.addWireFrame.apiResponseText));
-      console.log('here2:', setApiResponseText(data.addWireFrame.apiResponseText.content));
-      // const apiResponseText = data.addWireFrame.apiResponseText;
-      console.log('here:', data);
+      // setApiResponseText(data.addWireFrame.apiResponseText);
+      // console.log('test poo:', apiResponseText);
+      // console.log('test Poo1:', setApiResponseText(data.addWireFrame.apiResponseText));
+      // console.log('test Poo2:', setApiResponseText(data.addWireFrame.apiResponseText.content));
+      // // const apiResponseText = data.addWireFrame.apiResponseText;
+      // console.log('test Poo3:', data);
       setUserText('');
     } catch (err) {
       console.log(err);
