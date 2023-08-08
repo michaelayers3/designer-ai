@@ -5,8 +5,14 @@ const typeDefs = gql`
 
   type Wireframe {
     _id: ID
-    userText: String
+    websiteTitle: String
+    primaryColor: String
+    secondaryColor: String
+    websitePurpose: String
+    designStyle: String
     apiResponseText: String
+    userText: String
+    wireframeAuthor: String
     createdAt: String
   }
   
@@ -37,7 +43,7 @@ const typeDefs = gql`
     
     
     
-    addWireFrame(userText: String, apiResponseText: String, createdAt: String): Wireframe
+    addWireFrame(websiteTitle: String, primaryColor: String, secondaryColor: String, websitePurpose: String, designStyle: String, apiResponseText: String, userText: String, wireframeAuthor: String, createdAt: String): Wireframe 
   }
 `;
 

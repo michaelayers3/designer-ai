@@ -25,11 +25,17 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WIREFRAME = gql`
-  mutation addWireFrame($userText: String, $apiResponseText: String, $createdAt: String) {
-    addWireFrame(userText: $userText, apiResponseText: $apiResponseText, createdAt: $createdAt) {
+  mutation addWireFrame($websiteTitle: String, $primaryColor: String, $secondaryColor: String, $websitePurpose: String, $designStyle: String, $apiResponseText: String, $userText: String, $wireframeAuthor: String, $createdAt: String) {
+    addWireFrame(websiteTitle: $websiteTitle, primaryColor: $primaryColor, secondaryColor: $secondaryColor, websitePurpose: $websitePurpose, designStyle: $designStyle, apiResponseText: $apiResponseText, userText: $userText, wireframeAuthor: $wireframeAuthor, createdAt: $createdAt) {
       _id
-      userText
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
       apiResponseText
+      userText
+      wireframeAuthor
       createdAt
     }
   }
