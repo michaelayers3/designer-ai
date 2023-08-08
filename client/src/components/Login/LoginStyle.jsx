@@ -30,8 +30,8 @@ export const SubmitButton = styled.button`
   height: 80px;
 
   &:hover {
-    border-color: ${colors.mid};
-    color: ${colors.mid};
+    border-color: ${colors.light};
+    color: ${colors.light};
     cursor: pointer;
   }
 
