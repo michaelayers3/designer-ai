@@ -17,6 +17,7 @@ const RequestedList = ({
       <div key={wireframes._id}>
        <p>User Text: {wireframes.userText}</p>
        <p>Response: {wireframes.apiResponseText}</p>
+       <p>Created: {wireframes.createdAt} </p>
        {/* <p>Response: {wireframes.message}</p> */}
        {/* <p>Response: {wireframes.apiResponseText[0].message.content}</p> */}
       </div>

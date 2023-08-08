@@ -50,7 +50,7 @@ const resolvers = {
     addWireFrame: async (parent, { userText, createdAt }, context) => {
       // if (context.user) {
         const messages = [
-          {role: 'user', content: userText}
+          {role: 'user', content: `Create me a html wireframe that has ${userText}`}
         ];
           const completion = await getOpenAICompletion(messages);
           const apiResponseText = completion || 'Nope!';

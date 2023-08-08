@@ -19,6 +19,7 @@ const WireframeForm = () => {
       const { data } = await addWireframe({
         variables: {
           userText: userText,
+          
           // apiResponseText: apiResponseText,
         },
       });
@@ -54,10 +55,7 @@ const WireframeForm = () => {
         </button>
       </form>
       {error && <div>Something went wrong...</div>}
-      <div>
-        <h3>API Response:</h3>
-        {/* <p>{apiResponseText}</p> */}
-      </div>
+      
     </div>
   );
 };
