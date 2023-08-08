@@ -71,8 +71,8 @@ export const LightButton = styled.button`
   height: 140px;
 
   &:hover {
-    border-color: ${colors.mid};
-    color: ${colors.mid};
+    border-color: ${colors.light};
+    color: ${colors.light};
     cursor: pointer;
   }
 
@@ -94,7 +94,7 @@ export const DarkButton = styled.button`
   height: 140px;
 
   &:hover {
-    background-color: ${colors.mid};
+    background-color: ${colors.light};
     cursor: pointer;
   }
 
