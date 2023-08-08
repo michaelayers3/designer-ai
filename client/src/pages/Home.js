@@ -9,7 +9,9 @@ const Home = () => {
   const { loading, data } = useQuery(QUERY_WIREFRAMES);
   console.log('Home Poo:', data);
   const wireframes = data?.wireframes || [];
-  console.log('Home Poo2:', wireframes);
+  const wireframes2 = data?.wireframes?.apiResponseText
+  console.log("here:", wireframes2)
+  console.log('Home Poo2:', wireframes.apiResponseText);
 
   return (
     <main> 

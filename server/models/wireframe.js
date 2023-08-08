@@ -10,10 +10,10 @@ const wireframeSchema = new Schema({
     trim: true,
   },
   apiResponseText: {
-    type: Object,
+    type: String,
     // required: true,
     minlength: 1,
-    maxlength: 280,
+    // maxlength: 280,
     trim: true,
   },
   createdAt: {

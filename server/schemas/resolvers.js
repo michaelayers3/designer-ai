@@ -47,26 +47,28 @@ const resolvers = {
 
     //   return { token, user };
     // },
-    addWireFrame: async (parent, { userText,  createdAt }, context) => {
+    addWireFrame: async (parent, { userText, createdAt }, context) => {
       // if (context.user) {
         const messages = [
           {role: 'user', content: userText}
         ];
           const completion = await getOpenAICompletion(messages);
-          const apiResponseText = completion || 'Poop';
+          const apiResponseText = completion || 'Nope!';
           // const apiResponseText  = completion?.data?.choices|| 'No response from API';
           
+          // console.log('Resolver apiResponse:',apiResponseText)
         const wireframe = await Wireframe.create({
           userText: userText,
-          apiResponseText: apiResponseText,
+          apiResponseText: apiResponseText[0].message.content,
           createdAt: createdAt,
         });
-       console.log('ResolverPoo:',apiResponseText)
-       console.log('ResolverPoo1:',completion)
-       console.log('ResolverPoo2:', completion.data.choices)
+       console.log('ResolverPoo1:',apiResponseText[0].message.content)
+      //  console.log('ResolverPoo2:', completion.data.choices)
         console.log('userText:' ,userText)
-        console.log('apiResponseText:' ,apiResponseText)
-        console.log('Wireframe:' ,wireframe)
+        // console.log('apiResponseText:' ,apiResponseText)
+        // console.log('Wireframe:' ,wireframe)
+
+
         return wireframe;
         
         

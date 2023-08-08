@@ -1,17 +1,24 @@
 
-const RequestedList = ({ wireframes }) => {
+const RequestedList = ({
+  wireframes,
+  userText,
+  message,
+  apiResponseText
+
+}) => {
   if (!wireframes.length) {
     return <h3>No wireframes here...</h3>;
   }
-
+  console.log(wireframes.apiResponseText)
   return (
     <div>
     <h3>Wireframes:</h3>
-    {wireframes.map((wireframe) => (
-      <div key={wireframe._id}>
-        <p>{wireframe.userText}</p>
-        <p>{wireframe.apiResponseText}</p>
-        <p>{wireframe.createdAt}</p>
+    {wireframes.map((wireframes) => (
+      <div key={wireframes._id}>
+       <p>User Text: {wireframes.userText}</p>
+       <p>Response: {wireframes.apiResponseText}</p>
+       {/* <p>Response: {wireframes.message}</p> */}
+       {/* <p>Response: {wireframes.apiResponseText[0].message.content}</p> */}
       </div>
     ))}
   </div>

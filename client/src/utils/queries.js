@@ -15,16 +15,33 @@ export const QUERY_USER = gql`
   }
 `;
 
+
 export const QUERY_WIREFRAMES = gql`
-  query getWireFrames {
+  query wireframes {
     wireframes {
       _id
       userText
-      apiResponseText
       createdAt
+      apiResponseText
     }
   }
 `;
+// export const QUERY_WIREFRAMES = gql`
+//   query wireframes {
+//     wireframes {
+//       _id
+//       userText
+//       createdAt
+//       apiResponseText {
+//         _id
+//         message {
+//           _id
+//           content
+//         }
+//       }
+//     }
+//   }
+// `;
 
 export const QUERY_SINGLE_THOUGHT = gql`
   query getSingleThought($thoughtId: ID!) {

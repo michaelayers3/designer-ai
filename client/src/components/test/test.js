@@ -23,12 +23,7 @@ const WireframeForm = () => {
         },
       });
       
-      // setApiResponseText(data.addWireFrame.apiResponseText);
-      // console.log('test poo:', apiResponseText);
-      // console.log('test Poo1:', setApiResponseText(data.addWireFrame.apiResponseText));
-      // console.log('test Poo2:', setApiResponseText(data.addWireFrame.apiResponseText.content));
-      // // const apiResponseText = data.addWireFrame.apiResponseText;
-      // console.log('test Poo3:', data);
+      
       setUserText('');
     } catch (err) {
       console.log(err);
@@ -61,7 +56,7 @@ const WireframeForm = () => {
       {error && <div>Something went wrong...</div>}
       <div>
         <h3>API Response:</h3>
-        <p>{apiResponseText}</p>
+        {/* <p>{apiResponseText}</p> */}
       </div>
     </div>
   );
