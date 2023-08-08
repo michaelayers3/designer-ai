@@ -47,10 +47,10 @@ const resolvers = {
 
     //   return { token, user };
     // },
-    addWireFrame: async (parent, { userText, createdAt }, context) => {
+    addWireFrame: async (parent, { websiteTitle, primaryColor, secondaryColor, websitePurpose, designStyle, createdAt }, context) => {
       // if (context.user) {
         const messages = [
-          {role: 'user', content: userText}
+          {role: 'user', content: `Create me an HTML wireframe for a website with the following details: Title: ${websiteTitle}, Primary Color: ${primaryColor}, Secondary Color: ${secondaryColor}, Purpose: ${websitePurpose}, Design Style: ${designStyle}`}
         ];
           const completion = await getOpenAICompletion(messages);
           const apiResponseText = completion || 'Nope!';
@@ -58,7 +58,7 @@ const resolvers = {
           
           // console.log('Resolver apiResponse:',apiResponseText)
         const wireframe = await Wireframe.create({
-          userText: userText,
+          // userText: userText,
           apiResponseText: apiResponseText[0].message.content,
           createdAt: createdAt,
         });

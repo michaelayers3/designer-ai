@@ -2,7 +2,35 @@ const { Schema, model } = require('mongoose');
 const dateFormat = require('../utils/dateFormat');
 
 const wireframeSchema = new Schema({
-  userText: {
+  websiteTitle: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  primaryColor: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  secondaryColor: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  websitePurpose: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    maxlength: 280,
+    trim: true,
+  },
+  designStyle: {
     type: String,
     // required: true,
     minlength: 1,
@@ -10,6 +38,20 @@ const wireframeSchema = new Schema({
     trim: true,
   },
   apiResponseText: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    // maxlength: 280,
+    trim: true,
+  },
+  userText: {
+    type: String,
+    // required: true,
+    minlength: 1,
+    // maxlength: 280,
+    trim: true,
+  },
+  wireframeAuthor: {
     type: String,
     // required: true,
     minlength: 1,

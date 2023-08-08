@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -8,21 +8,33 @@ export const QUERY_USER = gql`
       email
       wireframes {
         _id
+        websiteTitle
+        primaryColor
+        secondaryColor
+        websitePurpose
+        designStyle
+        apiResponseText
         userText
+        wireframeAuthor
         createdAt
       }
     }
   }
 `;
 
-
 export const QUERY_WIREFRAMES = gql`
   query wireframes {
     wireframes {
       _id
-      userText
-      createdAt
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
       apiResponseText
+      userText
+      wireframeAuthor
+      createdAt
     }
   }
 `;
