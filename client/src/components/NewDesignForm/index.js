@@ -34,9 +34,6 @@ const WireframeForm = () => {
           query: QUERY_WIREFRAMES,
           data: { wireframes: [addWireframe, ...wireframes] },
         })
-        // .then(data => {
-          
-        // })
       } catch (e) {
         console.log("error:", error);
         console.error(e);
@@ -107,7 +104,6 @@ const WireframeForm = () => {
 
   return (
     <DesignFormContainer>
-      {Auth.loggedIn() ? (
         <FormContainer onSubmit={handleFormSubmit}>
           <InputContainer>
             <DesignInputTitle>Website Title</DesignInputTitle>
@@ -173,11 +169,6 @@ const WireframeForm = () => {
             </>
           )}
         </FormContainer>
-      ) : (
-        <p>
-          You need to be logged in to create a design. Please <Link to="/">login</Link>
-        </p>
-      )}
     </DesignFormContainer>
   );
 };
