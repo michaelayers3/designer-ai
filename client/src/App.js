@@ -57,7 +57,7 @@ function App() {
                 element={<NewDesign />}
               />
               <Route
-                path="/thoughts/:thoughtId"
+                path="/wireframes/:wireframeId"
                 element={<EditDesign />}
                 />
             </Routes>

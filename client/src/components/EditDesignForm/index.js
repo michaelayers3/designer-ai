@@ -1,66 +1,66 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useMutation } from "@apollo/client";
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import { useMutation } from "@apollo/client";
 
-import { ADD_COMMENT } from "../../utils/mutations";
+// // import { ADD_COMMENT } from "../../utils/mutations";
 
-import Auth from "../../utils/auth";
-import {
-  DesignFormContainer,
-  DesignFormInput,
-  DesignInputTitle,
-  FormContainer,
-  SubmitButton,
-} from "./EditDesignFormStyle";
+// import Auth from "../../utils/auth";
+// import {
+//   DesignFormContainer,
+//   DesignFormInput,
+//   DesignInputTitle,
+//   FormContainer,
+//   SubmitButton,
+// } from "./EditDesignFormStyle";
 
-const CommentForm = ({ thoughtId }) => {
-  const [commentText, setCommentText] = useState("");
+// const CommentForm = ({ thoughtId }) => {
+//   const [commentText, setCommentText] = useState("");
 
-  const [addComment, { error }] = useMutation(ADD_COMMENT);
+//   const [addComment, { error }] = useMutation(ADD_COMMENT);
 
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
+//   const handleFormSubmit = async (event) => {
+//     event.preventDefault();
 
-    try {
-      const { data } = await addComment({
-        variables: {
-          thoughtId,
-          commentText,
-          commentAuthor: Auth.getProfile().data.username,
-        },
-      });
+//     try {
+//       const { data } = await addComment({
+//         variables: {
+//           thoughtId,
+//           commentText,
+//           commentAuthor: Auth.getProfile().data.username,
+//         },
+//       });
 
-      setCommentText("");
-    } catch (err) {
-      console.error(err);
-    }
-  };
+//       setCommentText("");
+//     } catch (err) {
+//       console.error(err);
+//     }
+//   };
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+//   const handleChange = (event) => {
+//     const { name, value } = event.target;
 
-    if (name === "commentText" && value.length <= 280) {
-      setCommentText(value);
-    }
-  };
+//     if (name === "commentText" && value.length <= 280) {
+//       setCommentText(value);
+//     }
+//   };
 
-  return (
-    <DesignFormContainer>
-      <FormContainer onSubmit={handleFormSubmit}>
-        <DesignInputTitle>Title</DesignInputTitle>
-        <DesignFormInput
-          name="commentText"
-          placeholder="Design Title..."
-          value={commentText}
-          onChange={handleChange}
-        ></DesignFormInput>
+//   return (
+//     <DesignFormContainer>
+//       <FormContainer onSubmit={handleFormSubmit}>
+//         <DesignInputTitle>Title</DesignInputTitle>
+//         <DesignFormInput
+//           name="commentText"
+//           placeholder="Design Title..."
+//           value={commentText}
+//           onChange={handleChange}
+//         ></DesignFormInput>
         
-      <SubmitButton type="submit">Update Design</SubmitButton>
-      </FormContainer>
+//       <SubmitButton type="submit">Update Design</SubmitButton>
+//       </FormContainer>
 
 
-    </DesignFormContainer>
-  );
-};
+//     </DesignFormContainer>
+//   );
+// };
 
-export default CommentForm;
+// export default CommentForm;

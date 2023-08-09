@@ -1,4 +1,4 @@
-import { gql } from '@apollo/client';
+import { gql } from "@apollo/client";
 
 export const QUERY_USER = gql`
   query user($username: String!) {
@@ -6,39 +6,52 @@ export const QUERY_USER = gql`
       _id
       username
       email
-      thoughts {
+      wireframes {
         _id
-        thoughtText
+        websiteTitle
+        primaryColor
+        secondaryColor
+        websitePurpose
+        designStyle
+        apiResponseText
+        userText
+        wireframeAuthor
         createdAt
       }
     }
   }
 `;
 
-export const QUERY_THOUGHTS = gql`
-  query getThoughts {
-    thoughts {
+export const QUERY_WIREFRAMES = gql`
+  query wireframes {
+    wireframes {
       _id
-      thoughtText
-      thoughtAuthor
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
+      userText
+      wireframeAuthor
       createdAt
     }
   }
 `;
 
-export const QUERY_SINGLE_THOUGHT = gql`
-  query getSingleThought($thoughtId: ID!) {
-    thought(thoughtId: $thoughtId) {
+export const QUERY_SINGLE_WIREFRAME = gql`
+  query getSingleWireframe($wireframeId: ID!) {
+    wireframe(wireframeId: $wireframeId) {
       _id
-      thoughtText
-      thoughtAuthor
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
+      userText
+      wireframeAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        commentAuthor
-        createdAt
-      }
     }
   }
 `;
@@ -49,10 +62,16 @@ export const QUERY_ME = gql`
       _id
       username
       email
-      thoughts {
+      wireframes {
         _id
-        thoughtText
-        thoughtAuthor
+        websiteTitle
+        primaryColor
+        secondaryColor
+        websitePurpose
+        designStyle
+        apiResponseText
+        userText
+        wireframeAuthor
         createdAt
       }
     }

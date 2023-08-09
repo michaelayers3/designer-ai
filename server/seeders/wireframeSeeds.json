@@ -1,0 +1,52 @@
+[
+	{
+	  "websiteTitle": "Thoughts",
+	  "primaryColor": "#000000",
+	  "secondaryColor": "#ffffff",
+	  "websitePurpose": "A collection of thoughts from the best programmers in the world.",
+	  "designStyle": "Modern",
+	  "apiResponseText": "<div></div>",
+	  "wireframeAuthor": "Lernantino",
+	  "createdAt": "2019-03-05T22:00:00.000Z"
+	},
+	{
+	  "websiteTitle": "Josh's Art Portfolio",
+	  "primaryColor": "#000000",
+	  "secondaryColor": "#ffffff",
+	  "websitePurpose": "A collection of Josh's art.",
+	  "designStyle": "Modern",
+	  "apiResponseText": "<div></div>",
+	  "wireframeAuthor": "Brian Kernighan",
+	  "createdAt": ""
+	},
+	{
+	  "websiteTitle": "Carly's Flower Shop",
+	  "primaryColor": "#000000",
+	  "secondaryColor": "#ffffff",
+	  "websitePurpose": "A collection of flowers from the best florist in the world.",
+	  "designStyle": "Professional",
+	  "apiResponseText": "<div></div>",
+	  "wireframeAuthor": "Why The Lucky Stiff",
+	  "createdAt": ""
+	},
+	{
+	  "websiteTitle": "Kyle's Blog",
+	  "primaryColor": "#000000",
+	  "secondaryColor": "#ffffff",
+	  "websitePurpose": "Kyle's blog about his life.",
+	  "designStyle": "Fun",
+	  "apiResponseText": "<div></div>",
+	  "wireframeAuthor": "Donald Knuth",
+	  "createdAt": ""
+	},
+	{
+	  "websiteTitle": "Michael's Travel Vlog",
+	  "primaryColor": "#000000",
+	  "secondaryColor": "#ffffff",
+	  "websitePurpose": "A collection of events from Michael's life.",
+	  "designStyle": "Fancy",
+	  "apiResponseText": "<div></div>",
+	  "wireframeAuthor": "C.A.R. Hoare",
+	  "createdAt": ""
+	}
+  ]
