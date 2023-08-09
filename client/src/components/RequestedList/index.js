@@ -15,7 +15,7 @@ const RequestedList = ({
     <h3>Wireframes:</h3>
     {wireframes.map((wireframes) => (
       <div key={wireframes._id}>
-       <p>User Text: {wireframes.userText}</p>
+       {/* <p>User Text: {wireframes.userText}</p> */}
        <p>Response: {wireframes.apiResponseText}</p>
        <p>Created: {wireframes.createdAt} </p>
        {/* <p>Response: {wireframes.message}</p> */}

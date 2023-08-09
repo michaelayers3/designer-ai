@@ -22,8 +22,11 @@ const WireframeForm = () => {
     try {
       const { data } = await addWireframe({
         variables: {
-          userText: userText,
-          // apiResponseText: apiResponseText,
+          websiteTitle,
+          primaryColor,
+          secondaryColor,
+          websitePurpose,
+          designStyle,
         },
       });
       

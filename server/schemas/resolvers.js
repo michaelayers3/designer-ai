@@ -50,7 +50,7 @@ const resolvers = {
     addWireFrame: async (parent, { websiteTitle, primaryColor, secondaryColor, websitePurpose, designStyle, createdAt }, context) => {
       // if (context.user) {
         const messages = [
-          {role: 'user', content: userText}
+          {role: 'user', content: `Create me an HTML wireframe for a website with the following details: Title: ${websiteTitle}, Primary Color: ${primaryColor}, Secondary Color: ${secondaryColor}, Purpose: ${websitePurpose}, Design Style: ${designStyle}`}
         ];
           const completion = await getOpenAICompletion(messages);
           const apiResponseText = completion || 'Nope!';
