@@ -1,7 +1,7 @@
 import React from "react";
 import { useMutation } from "@apollo/client";
 import { REMOVE_WIREFRAME } from "../../utils/mutations";
-import { QUERY_WIREFRAMES } from "../../utils/queries";
+
 import {
   DesignContainer,
   DesignTitle,
@@ -38,7 +38,6 @@ const WireframeList = ({ wireframes, showTitle }) => {
             <DesignTitle>{wireframes.websiteTitle}</DesignTitle>
             <LinkContainer className="details">
                 <LinkButton to={`/wireframes/${wireframes._id}`}>View </LinkButton>
-                <LinkButton to={`/wireframes/${wireframes._id}`}>Edit </LinkButton>
                 <LinkButton onClick={() => handleDelete(wireframes._id)}>Delete</LinkButton>
             </LinkContainer>
           </DesignContainer>

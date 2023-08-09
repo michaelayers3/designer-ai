@@ -69,6 +69,7 @@ const resolvers = {
           websitePurpose: websitePurpose,
           designStyle: designStyle,
           wireframeAuthor: context.user.username,
+          
         });
 
         await User.findOneAndUpdate(
@@ -102,6 +103,19 @@ const resolvers = {
         return wireframe;
       }
       throw new AuthenticationError('You need to be logged in!');
+    },
+
+    updateWireframe: async (_, { wireframeId, apiResponseText }) => {
+      try {
+        const updatedWireframe = await Wireframe.findByIdAndUpdate(
+          wireframeId,
+          { $set: { apiResponseText } },
+          { new: true }
+        );
+        return updatedWireframe;
+      } catch (error) {
+        throw new Error("Failed to update wireframe");
+      }
     },
     
   },

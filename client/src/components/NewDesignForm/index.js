@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_WIREFRAME } from "../../utils/mutations";
@@ -16,16 +16,16 @@ import {
 
 import Auth from "../../utils/auth";
 
-
 const WireframeForm = () => {
-  const [websiteTitle, setWebsiteTitle] = useState('');
-  const [primaryColor, setPrimaryColor] = useState('');
-  const [secondaryColor, setSecondaryColor] = useState('');
-  const [websitePurpose, setWebsitePurpose] = useState('');
-  const [designStyle, setDesignStyle] = useState('');
-  
+  const [websiteTitle, setWebsiteTitle] = useState("");
+  const [primaryColor, setPrimaryColor] = useState("");
+  const [secondaryColor, setSecondaryColor] = useState("");
+  const [websitePurpose, setWebsitePurpose] = useState("");
+  const [designStyle, setDesignStyle] = useState("");
 
-  const [addWireframe, { error }] = useMutation(ADD_WIREFRAME, {
+  const navigate = useNavigate();
+
+  const [addWireframe, { loading, error }] = useMutation(ADD_WIREFRAME, {
     update(cache, { data: { addWireframe } }) {
       try {
         const { wireframes } = cache.readQuery({ query: QUERY_WIREFRAMES });
@@ -33,19 +33,21 @@ const WireframeForm = () => {
         cache.writeQuery({
           query: QUERY_WIREFRAMES,
           data: { wireframes: [addWireframe, ...wireframes] },
-        });
-
+        })
+        // .then(data => {
+          
+        // })
       } catch (e) {
-        console.log('error:', error)
+        console.log("error:", error);
         console.error(e);
       }
 
       // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME })|| { me: { wireframes: [] } };
+      const { me } = cache.readQuery({ query: QUERY_ME }) || { me: { wireframes: [] } };
       const updatedMe = {
         ...me,
         wireframes: [...me.wireframes, addWireframe],
-      }
+      };
 
       cache.writeQuery({
         query: QUERY_ME,
@@ -53,8 +55,13 @@ const WireframeForm = () => {
         data: { me: updatedMe },
       });
     },
+    
+    // onCompleted: ({addWireframe}) => {
+    //   navigate(`/wireframes/${addWireframe._id}`);
+    // },
   });
 
+  console.log("addWireframe:", addWireframe._id);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -69,11 +76,10 @@ const WireframeForm = () => {
           designStyle,
         },
       });
-      
-      
+
       // setUserText('');
     } catch (err) {
-      console.log('error')
+      console.log("error");
       console.log(err);
     }
   };
@@ -81,23 +87,23 @@ const WireframeForm = () => {
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'websiteTitle') {
+    if (name === "websiteTitle") {
       setWebsiteTitle(value);
     }
-    if (name === 'primaryColor') {
+    if (name === "primaryColor") {
       setPrimaryColor(value);
     }
-    if (name === 'secondaryColor') {
+    if (name === "secondaryColor") {
       setSecondaryColor(value);
     }
-    if (name === 'websitePurpose') {
+    if (name === "websitePurpose") {
       setWebsitePurpose(value);
     }
-    if (name === 'designStyle') {
+    if (name === "designStyle") {
       setDesignStyle(value);
     }
-      // setFormState({ ...formState, wireframeText: value });
-    }
+    // setFormState({ ...formState, wireframeText: value });
+  };
 
   return (
     <DesignFormContainer>
@@ -108,7 +114,7 @@ const WireframeForm = () => {
             <DesignFormInput
               name="websiteTitle"
               placeholder="Title..."
-              type= "text"
+              type="text"
               value={websiteTitle}
               onChange={handleChange}
             ></DesignFormInput>
@@ -118,7 +124,7 @@ const WireframeForm = () => {
             <DesignFormInput
               name="primaryColor"
               placeholder="Primary Color..."
-              type= "color"
+              type="color"
               value={primaryColor}
               onChange={handleChange}
             ></DesignFormInput>
@@ -128,7 +134,7 @@ const WireframeForm = () => {
             <DesignFormInput
               name="secondaryColor"
               placeholder="Secondary Color..."
-              type= "color"
+              type="color"
               value={secondaryColor}
               onChange={handleChange}
             ></DesignFormInput>
@@ -138,7 +144,7 @@ const WireframeForm = () => {
             <DesignFormInput
               name="websitePurpose"
               placeholder="Purpose..."
-              type= "text"
+              type="text"
               value={websitePurpose}
               onChange={handleChange}
             ></DesignFormInput>
@@ -148,16 +154,24 @@ const WireframeForm = () => {
             <DesignFormInput
               name="designStyle"
               placeholder="Style..."
-              type= "text"
+              type="text"
               value={designStyle}
               onChange={handleChange}
             ></DesignFormInput>
           </InputContainer>
 
-          {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
+          {loading ? (
+            <div className="col-12 my-3 bg-success text-white p-3">
+              Please wait while your wireframe is being generated...
+            </div>
+          ) : (
+            <>
+              <SubmitButton type="submit">Create New Design</SubmitButton>
+              {/* {error && (
+                <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
+              )} */}
+            </>
           )}
-          <SubmitButton type="submit">Create New Design</SubmitButton>
         </FormContainer>
       ) : (
         <p>
