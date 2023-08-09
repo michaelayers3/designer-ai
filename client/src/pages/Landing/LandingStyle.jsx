@@ -69,8 +69,8 @@ export const LightButton = styled.button`
   font-family: monospace;
   background-color: ${colors.light};
   border-radius: 100px;
-  width: 350px;
-  height: 140px;
+  width: 225px;
+  height: 110px;
 
   &:hover {
     border-color: ${colors.light};
@@ -94,8 +94,8 @@ export const DarkButton = styled.button`
   font-family: monospace;
   background-color: ${colors.mid};
   border-radius: 100px;
-  width: 350px;
-  height: 140px;
+  width: 225px;
+  height: 110px;
 
   &:hover {
     background-color: ${colors.light};
