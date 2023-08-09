@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Editor from "./Editor";
-import { EditorFrame } from "./EditorStyle";
+import { EditorContainer, EditorFrame, EditorTitle } from "./EditorStyle";
 
-
-function CodeDisplay({code}) {
+function CodeDisplay({ code }) {
   const [html, setHtml] = useState(`${code}`);
   const [srcDoc, setSrcDoc] = useState("");
-
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -15,24 +13,16 @@ function CodeDisplay({code}) {
 				`);
     }, 400);
 
-	return () => clearTimeout(timeout)
+    return () => clearTimeout(timeout);
   }, [html]);
 
   return (
     <>
-      <div>
-        <EditorFrame
-          srcDoc={srcDoc}
-          title="output"
-          sandbox="allow-scripts"
-          // frameBorder="0"
-          width= "80vh"
-          height= "80vw"
-        />
-      </div>
-      <div>
+      <EditorContainer>
+        <EditorFrame srcDoc={srcDoc} title="output" sandbox="allow-scripts" />
+        <EditorTitle>Edit Your Code Below</EditorTitle>
         <Editor language="xml" value={html} onChange={setHtml} />
-      </div>
+      </EditorContainer>
     </>
   );
 }

@@ -5,7 +5,7 @@ import "codemirror/theme/nord.css";
 import "codemirror/mode/xml/xml";
 import { useMutation } from "@apollo/client";
 import { UPDATE_WIREFRAME } from "../../utils/mutations";
-import { CodeEditor, EditorContainer, EditorTitle } from "./EditorStyle";
+import { CodeEditor, EditorContainer, SaveChangesButton } from "./EditorStyle";
 
 export default function Editor({ language, value, onChange }) {
   const { wireframeId } = useParams();
@@ -36,13 +36,11 @@ export default function Editor({ language, value, onChange }) {
     }
   };
   return (
-    <EditorContainer>
-      <EditorTitle>Edit Code</EditorTitle>
+    <>
       <CodeEditor
         onBeforeChange={handleChange}
         value={value}
         options={{
-         
           lineWrapping: true,
           lint: true,
           mode: language,
@@ -50,58 +48,7 @@ export default function Editor({ language, value, onChange }) {
           lineNumbers: true,
         }}
       />
-      <br />
-      <button onClick = {handleSave}>Save Changes</button>
-    </EditorContainer>
+      <SaveChangesButton onClick = {handleSave}>Save Changes</SaveChangesButton>
+   </>
   );
 }
-// Editor.js
-// import React, { useState } from "react";
-// import "codemirror/lib/codemirror.css";
-// import "codemirror/theme/nord.css";
-// import "codemirror/mode/xml/xml";
-// import { useMutation } from "@apollo/client";
-// import { UPDATE_WIREFRAME } from "../../utils/mutations";
-// import { CodeEditor, EditorContainer, EditorTitle } from "./EditorStyle";
-
-// export default function Editor({ language, initialValue, wireframeId }) {
-//   const [value, setValue] = useState(initialValue);
-//   const [updateWireframe, { loading, error }] = useMutation(UPDATE_WIREFRAME);
-
-//   function handleChange(editor, data, value) {
-//     setValue(value);
-//   }
-
-//   const handleSave = async () => {
-//     try {
-//       await updateWireframe({
-//         variables: {
-//           _id: wireframeId,
-//           apiResponseText: value,
-//         },
-//       });
-//       // Handle success or show a message
-//     } catch (error) {
-//       // Handle error
-//     }
-//   };
-
-//   return (
-//     <EditorContainer>
-//       <EditorTitle>Edit Code</EditorTitle>
-//       <CodeEditor
-//         onBeforeChange={handleChange}
-//         value={value}
-//         options={{
-//           lineWrapping: true,
-//           lint: true,
-//           mode: language,
-//           theme: "nord",
-//           lineNumbers: true,
-//         }}
-//       />
-//       <br />
-//       <button onClick={handleSave}>Save Changes</button>
-//     </EditorContainer>
-//   );
-// }
