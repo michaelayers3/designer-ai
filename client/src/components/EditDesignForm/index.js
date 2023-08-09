@@ -54,27 +54,6 @@ const CommentForm = ({ thoughtId }) => {
           value={commentText}
           onChange={handleChange}
         ></DesignFormInput>
-        <DesignInputTitle>Website Type</DesignInputTitle>
-        <DesignFormInput
-          name="commentText"
-          placeholder="Website Type..."
-          value={commentText}
-          onChange={handleChange}
-        ></DesignFormInput>
-        <DesignInputTitle>Primary Color</DesignInputTitle>
-        <DesignFormInput
-          name="commentText"
-          placeholder="Primary Color..."
-          value={commentText}
-          onChange={handleChange}
-        ></DesignFormInput>
-        <DesignInputTitle>Secondary Color</DesignInputTitle>
-        <DesignFormInput
-          name="commentText"
-          placeholder="Secondary Color..."
-          value={commentText}
-          onChange={handleChange}
-        ></DesignFormInput>
         
       <SubmitButton type="submit">Update Design</SubmitButton>
       </FormContainer>
