@@ -27,6 +27,7 @@ export const TitleSection = styled.section`
 
 export const LandingTitle = styled.h1`
   font-size: 5rem;
+  color: white;
 
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -34,8 +35,8 @@ export const LandingTitle = styled.h1`
 `;
 
 export const LandingSubtitle = styled.h2`
-  color: ${colors.dark};
-  font-size: 3rem;
+  color: ${colors.light};
+  font-size: 2rem;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -61,8 +62,8 @@ export const LoginSection = styled.section`
 `;
 
 export const LightButton = styled.button`
-  border: 5px solid ${colors.dark};
-  color: ${colors.dark};
+  border: 5px solid ${colors.mid};
+  color: ${colors.mid};
   font-size: 2.6rem;
   font-weight: bold;
   background-color: white;
@@ -88,7 +89,7 @@ export const DarkButton = styled.button`
   color: white;
   font-size: 2.6rem;
   font-weight: bold;
-  background-color: ${colors.dark};
+  background-color: ${colors.mid};
   border-radius: 100px;
   width: 350px;
   height: 140px;
