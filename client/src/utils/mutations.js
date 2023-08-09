@@ -55,3 +55,19 @@ export const REMOVE_WIREFRAME = gql`
     }
   }
 `;
+
+export const UPDATE_WIREFRAME = gql`
+  mutation updateWireframe($wireframeId: ID, $apiResponseText: String) {
+    updateWireframe(wireframeId: $wireframeId, apiResponseText: $apiResponseText) {
+      _id
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
+      wireframeAuthor
+      createdAt
+    }
+  }
+`;

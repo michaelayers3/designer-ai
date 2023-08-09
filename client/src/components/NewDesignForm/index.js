@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_WIREFRAME } from "../../utils/mutations";
@@ -23,9 +23,11 @@ const WireframeForm = () => {
   const [secondaryColor, setSecondaryColor] = useState('');
   const [websitePurpose, setWebsitePurpose] = useState('');
   const [designStyle, setDesignStyle] = useState('');
+
+  const navigate = useNavigate();
   
 
-  const [addWireframe, { error }] = useMutation(ADD_WIREFRAME, {
+  const [addWireframe, { loading, error }] = useMutation(ADD_WIREFRAME, {
     update(cache, { data: { addWireframe } }) {
       try {
         const { wireframes } = cache.readQuery({ query: QUERY_WIREFRAMES });
@@ -39,26 +41,33 @@ const WireframeForm = () => {
         console.log('error:', error)
         console.error(e);
       }
-
+      
       // update me object's cache
       const { me } = cache.readQuery({ query: QUERY_ME })|| { me: { wireframes: [] } };
       const updatedMe = {
         ...me,
         wireframes: [...me.wireframes, addWireframe],
       }
-
+      
       cache.writeQuery({
         query: QUERY_ME,
         // data: { me: { ...me, wireframes: [...me.wireframes, addWireframe] } },
         data: { me: updatedMe },
       });
+      
+    },
+    onCompleted({ addWireframe }) {
+      navigate(`/wireframes/${addWireframe._id}`);
     },
   });
-
-
+  
+  console.log('addWireframe:', addWireframe._id)
+ 
+  
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    
     try {
       const { data } = await addWireframe({
         variables: {
@@ -77,10 +86,10 @@ const WireframeForm = () => {
       console.log(err);
     }
   };
-
+  
   const handleChange = (event) => {
     const { name, value } = event.target;
-
+    
     if (name === 'websiteTitle') {
       setWebsiteTitle(value);
     }
@@ -96,9 +105,9 @@ const WireframeForm = () => {
     if (name === 'designStyle') {
       setDesignStyle(value);
     }
-      // setFormState({ ...formState, wireframeText: value });
-    }
-
+    // setFormState({ ...formState, wireframeText: value });
+  }
+  
   return (
     <DesignFormContainer>
       {Auth.loggedIn() ? (
@@ -111,7 +120,7 @@ const WireframeForm = () => {
               type= "text"
               value={websiteTitle}
               onChange={handleChange}
-            ></DesignFormInput>
+              ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Primary Color</DesignInputTitle>
@@ -121,7 +130,7 @@ const WireframeForm = () => {
               type= "color"
               value={primaryColor}
               onChange={handleChange}
-            ></DesignFormInput>
+              ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Secondary Color</DesignInputTitle>
@@ -131,7 +140,7 @@ const WireframeForm = () => {
               type= "color"
               value={secondaryColor}
               onChange={handleChange}
-            ></DesignFormInput>
+              ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Website Purpose</DesignInputTitle>
@@ -141,7 +150,7 @@ const WireframeForm = () => {
               type= "text"
               value={websitePurpose}
               onChange={handleChange}
-            ></DesignFormInput>
+              ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Design Style</DesignInputTitle>
@@ -151,13 +160,19 @@ const WireframeForm = () => {
               type= "text"
               value={designStyle}
               onChange={handleChange}
-            ></DesignFormInput>
+              ></DesignFormInput>
           </InputContainer>
 
-          {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
+          {loading ? (
+            <div className="col-12 my-3 bg-success text-white p-3">Please wait while your wireframe is being generated...</div>
+            ) : (
+              <>
+              <SubmitButton type="submit">Create New Design</SubmitButton>
+              {/* {error && (
+                <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
+              )} */}
+            </>
           )}
-          <SubmitButton type="submit">Create New Design</SubmitButton>
         </FormContainer>
       ) : (
         <p>

@@ -17,7 +17,6 @@ const typeDefs = gql`
     websitePurpose: String
     designStyle: String
     apiResponseText: String
-
     wireframeAuthor: String
     createdAt: String
   }
@@ -50,6 +49,7 @@ const typeDefs = gql`
     removeWireframe(wireframeId: ID!): Wireframe
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    updateWireframe(wireframeId: ID, apiResponseText: String): Wireframe
   }
 `;
 
