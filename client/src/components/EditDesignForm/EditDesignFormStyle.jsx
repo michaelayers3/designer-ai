@@ -28,13 +28,13 @@ export const DesignInputTitle = styled.h4`
   margin-top: 2rem;
   color: white;
   text-align: left;
-
 `;
 
 export const SubmitButton = styled.button`
   border: none;
   color: white;
   font-size: 1.5rem;
+  font-family: monospace;
   border-radius: 100px;
   height: 80px;
   width: 220px;

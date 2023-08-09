@@ -18,12 +18,13 @@ export const HeaderTitleContainer = styled.div`
 `;
 
 export const HeaderTitle = styled(Link)`
-  color: black;
+  color: ${colors.dark};
   font-size: 6rem;
+  font-weight: bold;
 
   &:hover {
     text-decoration: none;
-    color: ${colors.dark};
+    color: ${colors.mid};
   }
 
   @media (max-width: 768px) {
@@ -36,6 +37,7 @@ export const MenuTitle = styled.div`
   flex-direction: column;
   // border: 2px solid black;
   position: fixed;
+  font-family: monospace;
   top: 15px;
   right: 80px;
   width: 400px;
