@@ -24,6 +24,7 @@ export const SubmitButton = styled.button`
   color: ${colors.dark};
   font-size: 2.6rem;
   font-weight: bold;
+  font-family: monospace;
   background-color: white;
   border-radius: 100px;
   width: 350px;

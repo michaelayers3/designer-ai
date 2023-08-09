@@ -66,6 +66,7 @@ export const LightButton = styled.button`
   color: ${colors.mid};
   font-size: 2.6rem;
   font-weight: bold;
+  font-family: monospace;
   background-color: white;
   border-radius: 100px;
   width: 350px;
@@ -89,6 +90,7 @@ export const DarkButton = styled.button`
   color: white;
   font-size: 2.6rem;
   font-weight: bold;
+  font-family: monospace;
   background-color: ${colors.mid};
   border-radius: 100px;
   width: 350px;
