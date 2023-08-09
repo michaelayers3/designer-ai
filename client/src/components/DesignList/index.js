@@ -1,4 +1,7 @@
 import React from "react";
+import { useMutation } from "@apollo/client";
+import { REMOVE_WIREFRAME } from "../../utils/mutations";
+import { QUERY_WIREFRAMES } from "../../utils/queries";
 import {
   DesignContainer,
   DesignTitle,
@@ -7,22 +10,36 @@ import {
 } from "./DesignListStyle";
 import "./DesignListCSS.css";
 
-const DesignList = ({ thoughts, title, showTitle = true }) => {
-  if (!thoughts.length) {
+const WireframeList = ({ wireframes, showTitle }) => {
+
+  const [removeWireframe] = useMutation(REMOVE_WIREFRAME);
+
+  const handleDelete = async (wireframeId) => {
+    try {
+      await removeWireframe({
+        variables: { wireframeId },
+        refetchQueries: [{query:'QUERY_WIREFRAMES'}]
+      });
+    } catch (error) {
+      console.error('Error deleting wireframe:', error);
+    }
+  };
+
+  if (!wireframes.length) {
     return <h3>No Designs Yet</h3>;
   }
 
   return (
     <>
-      {showTitle && <h3>{title}</h3>}
-      {thoughts &&
-        thoughts.map((thought) => (
-          <DesignContainer className="image-wrapper" key={thought._id}>
-            <DesignTitle>{thought.thoughtText}</DesignTitle>
+      {showTitle && <h3>{wireframes.websiteTitle}</h3>}
+      {wireframes &&
+        wireframes.map((wireframes) => (
+          <DesignContainer className="image-wrapper" key={wireframes._id}>
+            <DesignTitle>{wireframes.websiteTitle}</DesignTitle>
             <LinkContainer className="details">
-                <LinkButton to={`/thoughts/${thought._id}`}>View </LinkButton>
-                <LinkButton to={`/thoughts/${thought._id}`}>Edit </LinkButton>
-                <LinkButton to={`/thoughts/${thought._id}`}>Delete </LinkButton>
+                <LinkButton to={`/wireframes/${wireframes._id}`}>View </LinkButton>
+                <LinkButton to={`/wireframes/${wireframes._id}`}>Edit </LinkButton>
+                <LinkButton onClick={() => handleDelete(wireframes._id)}>Delete</LinkButton>
             </LinkContainer>
           </DesignContainer>
         ))}
@@ -30,4 +47,4 @@ const DesignList = ({ thoughts, title, showTitle = true }) => {
   );
 };
 
-export default DesignList;
+export default WireframeList;

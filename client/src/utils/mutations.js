@@ -24,33 +24,34 @@ export const ADD_USER = gql`
   }
 `;
 
-export const ADD_THOUGHT = gql`
-  mutation addThought($thoughtText: String!) {
-    addThought(thoughtText: $thoughtText) {
+export const ADD_WIREFRAME = gql`
+  mutation addWireFrame($websiteTitle: String, $primaryColor: String, $secondaryColor: String, $websitePurpose: String, $designStyle: String, $apiResponseText: String, $wireframeAuthor: String, $createdAt: String) {
+    addWireFrame(websiteTitle: $websiteTitle, primaryColor: $primaryColor, secondaryColor: $secondaryColor, websitePurpose: $websitePurpose, designStyle: $designStyle, apiResponseText: $apiResponseText, wireframeAuthor: $wireframeAuthor, createdAt: $createdAt) {
       _id
-      thoughtText
-      thoughtAuthor
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
+      wireframeAuthor
       createdAt
-      comments {
-        _id
-        commentText
-      }
     }
   }
 `;
 
-export const ADD_COMMENT = gql`
-  mutation addComment($thoughtId: ID!, $commentText: String!) {
-    addComment(thoughtId: $thoughtId, commentText: $commentText) {
+export const REMOVE_WIREFRAME = gql`
+  mutation removeWireframe($wireframeId: ID!) {
+    removeWireframe(wireframeId: $wireframeId) {
       _id
-      thoughtText
-      thoughtAuthor
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
+      wireframeAuthor
       createdAt
-      comments {
-        _id
-        commentText
-        createdAt
-      }
     }
   }
 `;

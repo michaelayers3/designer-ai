@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
-import { ADD_THOUGHT } from "../../utils/mutations";
-import { QUERY_THOUGHTS, QUERY_ME } from "../../utils/queries";
+import { ADD_WIREFRAME } from "../../utils/mutations";
+import { QUERY_WIREFRAMES, QUERY_ME } from "../../utils/queries";
 
 import {
   DesignFormContainer,
@@ -16,93 +16,140 @@ import {
 
 import Auth from "../../utils/auth";
 
-const ThoughtForm = () => {
-  const [thoughtText, setThoughtText] = useState("");
 
-  const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-    update(cache, { data: { addThought } }) {
+const WireframeForm = () => {
+  const [websiteTitle, setWebsiteTitle] = useState('');
+  const [primaryColor, setPrimaryColor] = useState('');
+  const [secondaryColor, setSecondaryColor] = useState('');
+  const [websitePurpose, setWebsitePurpose] = useState('');
+  const [designStyle, setDesignStyle] = useState('');
+  
+
+  const [addWireframe, { error }] = useMutation(ADD_WIREFRAME, {
+    update(cache, { data: { addWireframe } }) {
       try {
-        const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
+        const { wireframes } = cache.readQuery({ query: QUERY_WIREFRAMES });
 
         cache.writeQuery({
-          query: QUERY_THOUGHTS,
-          data: { thoughts: [addThought, ...thoughts] },
+          query: QUERY_WIREFRAMES,
+          data: { wireframes: [addWireframe, ...wireframes] },
         });
+
       } catch (e) {
+        console.log('error:', error)
         console.error(e);
       }
 
       // update me object's cache
-      const { me } = cache.readQuery({ query: QUERY_ME });
+      const { me } = cache.readQuery({ query: QUERY_ME })|| { me: { wireframes: [] } };
+      const updatedMe = {
+        ...me,
+        wireframes: [...me.wireframes, addWireframe],
+      }
+
       cache.writeQuery({
         query: QUERY_ME,
-        data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
+        // data: { me: { ...me, wireframes: [...me.wireframes, addWireframe] } },
+        data: { me: updatedMe },
       });
     },
   });
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
     try {
-      const { data } = await addThought({
+      const { data } = await addWireframe({
         variables: {
-          thoughtText,
-          thoughtAuthor: Auth.getProfile().data.username,
+          websiteTitle,
+          primaryColor,
+          secondaryColor,
+          websitePurpose,
+          designStyle,
         },
       });
-
-      setThoughtText("");
+      
+      
+      // setUserText('');
     } catch (err) {
-      console.error(err);
+      console.log('error')
+      console.log(err);
     }
   };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === "thoughtText" && value.length <= 280) {
-      setThoughtText(value);
+    if (name === 'websiteTitle') {
+      setWebsiteTitle(value);
     }
-  };
+    if (name === 'primaryColor') {
+      setPrimaryColor(value);
+    }
+    if (name === 'secondaryColor') {
+      setSecondaryColor(value);
+    }
+    if (name === 'websitePurpose') {
+      setWebsitePurpose(value);
+    }
+    if (name === 'designStyle') {
+      setDesignStyle(value);
+    }
+      // setFormState({ ...formState, wireframeText: value });
+    }
 
   return (
     <DesignFormContainer>
       {Auth.loggedIn() ? (
         <FormContainer onSubmit={handleFormSubmit}>
           <InputContainer>
-            <DesignInputTitle>Title</DesignInputTitle>
+            <DesignInputTitle>Website Title</DesignInputTitle>
             <DesignFormInput
-              name="thoughtText"
+              name="websiteTitle"
               placeholder="Title..."
-              value={thoughtText}
-              onChange={handleChange}
-            ></DesignFormInput>
-          </InputContainer>
-          <InputContainer>
-            <DesignInputTitle>Website Type</DesignInputTitle>
-            <DesignFormInput
-              name="thoughtText"
-              placeholder="Website Type..."
-              value={thoughtText}
+              type= "text"
+              value={websiteTitle}
               onChange={handleChange}
             ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Primary Color</DesignInputTitle>
             <DesignFormInput
-              name="thoughtText"
+              name="primaryColor"
               placeholder="Primary Color..."
-              value={thoughtText}
+              type= "color"
+              value={primaryColor}
               onChange={handleChange}
             ></DesignFormInput>
           </InputContainer>
           <InputContainer>
             <DesignInputTitle>Secondary Color</DesignInputTitle>
             <DesignFormInput
-              name="thoughtText"
+              name="secondaryColor"
               placeholder="Secondary Color..."
-              value={thoughtText}
+              type= "color"
+              value={secondaryColor}
+              onChange={handleChange}
+            ></DesignFormInput>
+          </InputContainer>
+          <InputContainer>
+            <DesignInputTitle>Website Purpose</DesignInputTitle>
+            <DesignFormInput
+              name="websitePurpose"
+              placeholder="Purpose..."
+              type= "text"
+              value={websitePurpose}
+              onChange={handleChange}
+            ></DesignFormInput>
+          </InputContainer>
+          <InputContainer>
+            <DesignInputTitle>Design Style</DesignInputTitle>
+            <DesignFormInput
+              name="designStyle"
+              placeholder="Style..."
+              type= "text"
+              value={designStyle}
               onChange={handleChange}
             ></DesignFormInput>
           </InputContainer>
@@ -121,4 +168,4 @@ const ThoughtForm = () => {
   );
 };
 
-export default ThoughtForm;
+export default WireframeForm;

@@ -1,46 +1,29 @@
 import React from "react";
 
-import { useParams } from "react-router-dom";
-import { useQuery } from "@apollo/client";
 
-import DesignResults from "../../components/DesignResults";
-import NewDesignForm from '../../components/NewDesignForm';
+// import DesignResults from "../../components/DesignResults";
+import WireframeForm from '../../components/NewDesignForm';
 import Header from "../../components/Header";
 
-import { QUERY_SINGLE_THOUGHT } from "../../utils/queries";
 import {
-  DesignCodeContainer,
+  // DesignCodeContainer,
   DesignContainer,
   DesignDetailsContainer,
   DesignTitle,
 } from "./DesignStyle";
 
-const SingleThought = () => {
-  const { thoughtId } = useParams();
-
-  const { loading, data } = useQuery(QUERY_SINGLE_THOUGHT, {
-    variables: { thoughtId: thoughtId },
-  });
-
-  const thought = data?.thought || {};
-
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+const NewWireframeForm = () => {
   return (
     <>
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
           <DesignTitle>Create Your Design</DesignTitle>
-            <NewDesignForm/>
-          <DesignCodeContainer>
-            <DesignResults comments={thought.comments} />
-          </DesignCodeContainer>
+            <WireframeForm />
         </DesignDetailsContainer>
       </DesignContainer>
     </>
   );
 };
 
-export default SingleThought;
+export default NewWireframeForm;
