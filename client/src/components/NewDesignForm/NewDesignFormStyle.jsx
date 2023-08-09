@@ -39,15 +39,18 @@ export const SubmitButton = styled.button`
   border: none;
   color: white;
   font-size: 1.5rem;
+  font-weight: bold;
   border-radius: 100px;
 
-  height: 80px;
-  width: 220px;
+  height: 95px;
+  width: 320px;
   background-color: ${colors.dark};
+  color: ${colors.light};
   margin-top: 3rem;
 
   &:hover {
     cursor: pointer;
     background-color: ${colors.light};
+    color: ${colors.dark};
   }
 `;

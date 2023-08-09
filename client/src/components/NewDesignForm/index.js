@@ -108,13 +108,16 @@ const ThoughtForm = () => {
           </InputContainer>
 
           {error && (
-            <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
+            <div className="col-12 my-3 bg-danger text-white p-3">
+              {error.message}
+            </div>
           )}
-          <SubmitButton type="submit">Create New Design</SubmitButton>
+          <SubmitButton type="submit">CREATE NEW DESIGN</SubmitButton>
         </FormContainer>
       ) : (
         <p>
-          You need to be logged in to create a design. Please <Link to="/">login</Link>
+          You need to be logged in to create a design. Please{" "}
+          <Link to="/">login</Link>
         </p>
       )}
     </DesignFormContainer>

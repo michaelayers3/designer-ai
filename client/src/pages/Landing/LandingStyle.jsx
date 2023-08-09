@@ -26,7 +26,7 @@ export const TitleSection = styled.section`
 `;
 
 export const LandingTitle = styled.h1`
-  font-size: 5rem;
+  font-size: 7rem;
   color: white;
 
   @media (max-width: 768px) {
@@ -67,7 +67,7 @@ export const LightButton = styled.button`
   font-size: 2.6rem;
   font-weight: bold;
   font-family: monospace;
-  background-color: white;
+  background-color: ${colors.light};
   border-radius: 100px;
   width: 350px;
   height: 140px;
@@ -75,6 +75,7 @@ export const LightButton = styled.button`
   &:hover {
     border-color: ${colors.light};
     color: ${colors.light};
+    background-color: ${colors.mid};
     cursor: pointer;
   }
 
@@ -86,8 +87,8 @@ export const LightButton = styled.button`
 `;
 
 export const DarkButton = styled.button`
-  border: none;
-  color: white;
+  border: 5px solid ${colors.light};
+  color: ${colors.light};
   font-size: 2.6rem;
   font-weight: bold;
   font-family: monospace;
@@ -98,7 +99,9 @@ export const DarkButton = styled.button`
 
   &:hover {
     background-color: ${colors.light};
+    color: ${colors.mid};
     cursor: pointer;
+    border-color: ${colors.mid};
   }
 
   @media (max-width: 768px) {
