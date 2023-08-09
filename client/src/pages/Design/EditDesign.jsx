@@ -6,10 +6,10 @@ import { useQuery } from "@apollo/client";
 import DesignResults from "../../components/DesignResults";
 import EditDesignForm from "../../components/EditDesignForm";
 import Header from "../../components/Header";
+import CodeDisplay from "../../components/CodeDisplay/CodeDisplay";
 
 import { QUERY_SINGLE_THOUGHT } from "../../utils/queries";
 import {
-  DesignCodeContainer,
   DesignContainer,
   DesignDetailsContainer,
   DesignTitle,
@@ -32,11 +32,10 @@ const SingleThought = () => {
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
-          <DesignTitle>Editing: {thought.thoughtText}</DesignTitle>
+          <DesignTitle>{thought.thoughtText}</DesignTitle>
             <EditDesignForm thoughtId={thought._id} />
-          <DesignCodeContainer>
+            <CodeDisplay code= {thought.comments[0]?.commentText || " "} />
             <DesignResults comments={thought.comments} />
-          </DesignCodeContainer>
         </DesignDetailsContainer>
       </DesignContainer>
     </>
