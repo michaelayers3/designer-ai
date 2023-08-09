@@ -22,22 +22,24 @@ const SingleWireframe = () => {
   });
 
   const wireframe = data?.wireframe || {};
+  console.log("wireframe title", wireframe.websiteTitle);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div>bingbong...</div>;
   }
   return (
     <>
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
-          <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
-            <EditDesignForm wireframeId={wireframe._id} />
+         <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
+  {/* //           <EditDesignForm wireframeId={wireframe._id} /> */}
             <CodeDisplay code= {wireframe.apiResponseText || " "} />
         </DesignDetailsContainer>
-      </DesignContainer>
-    </>
+       </DesignContainer>
+       </>
   );
+
 };
 
 export default SingleWireframe;

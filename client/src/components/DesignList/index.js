@@ -1,4 +1,7 @@
 import React from "react";
+import { useMutation } from "@apollo/client";
+import { REMOVE_WIREFRAME } from "../../utils/mutations";
+import { QUERY_WIREFRAMES } from "../../utils/queries";
 import {
   DesignContainer,
   DesignTitle,
@@ -8,6 +11,20 @@ import {
 import "./DesignListCSS.css";
 
 const WireframeList = ({ wireframes, showTitle }) => {
+
+  const [removeWireframe] = useMutation(REMOVE_WIREFRAME);
+
+  const handleDelete = async (wireframeId) => {
+    try {
+      await removeWireframe({
+        variables: { wireframeId },
+        refetchQueries: [{query:'QUERY_WIREFRAMES'}]
+      });
+    } catch (error) {
+      console.error('Error deleting wireframe:', error);
+    }
+  };
+
   if (!wireframes.length) {
     return <h3>No Designs Yet</h3>;
   }
@@ -22,7 +39,7 @@ const WireframeList = ({ wireframes, showTitle }) => {
             <LinkContainer className="details">
                 <LinkButton to={`/wireframes/${wireframes._id}`}>View </LinkButton>
                 <LinkButton to={`/wireframes/${wireframes._id}`}>Edit </LinkButton>
-                <LinkButton to={`/wireframes/${wireframes._id}`}>Delete </LinkButton>
+                <LinkButton onClick={() => handleDelete(wireframes._id)}>Delete</LinkButton>
             </LinkContainer>
           </DesignContainer>
         ))}

@@ -17,7 +17,7 @@ const typeDefs = gql`
     websitePurpose: String
     designStyle: String
     apiResponseText: String
-    userText: String
+
     wireframeAuthor: String
     createdAt: String
   }
@@ -40,13 +40,14 @@ const typeDefs = gql`
   type Query {
     wireframes(username: String): [Wireframe] 
     users: [User]
-    user(username: String!): User
-    wireframe(wireframeId: ID!): Wireframe
+    user(username: String): User
+    wireframe(wireframeId: ID): Wireframe
     me: User
   }
 
   type Mutation {
-    addWireFrame(websiteTitle: String, primaryColor: String, secondaryColor: String, websitePurpose: String, designStyle: String, apiResponseText: String, userText: String, wireframeAuthor: String, createdAt: String): Wireframe
+    addWireFrame(websiteTitle: String, primaryColor: String, secondaryColor: String, websitePurpose: String, designStyle: String, apiResponseText: String, wireframeAuthor: String, createdAt: String): Wireframe
+    removeWireframe(wireframeId: ID!): Wireframe
     addUser(username: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
   }

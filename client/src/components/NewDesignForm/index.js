@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_WIREFRAME } from "../../utils/mutations";
+import { QUERY_WIREFRAMES, QUERY_ME } from "../../utils/queries";
 
 import {
   DesignFormContainer,
@@ -15,66 +16,45 @@ import {
 
 import Auth from "../../utils/auth";
 
-// const ThoughtForm = () => {
-//   const [thoughtText, setThoughtText] = useState("");
 
-//   const [addThought, { error }] = useMutation(ADD_THOUGHT, {
-//     update(cache, { data: { addThought } }) {
-//       try {
-//         const { thoughts } = cache.readQuery({ query: QUERY_THOUGHTS });
-
-//         cache.writeQuery({
-//           query: QUERY_THOUGHTS,
-//           data: { thoughts: [addThought, ...thoughts] },
-//         });
-//       } catch (e) {
-//         console.error(e);
-//       }
-
-//       // update me object's cache
-//       const { me } = cache.readQuery({ query: QUERY_ME });
-//       cache.writeQuery({
-//         query: QUERY_ME,
-//         data: { me: { ...me, thoughts: [...me.thoughts, addThought] } },
-//       });
-//     },
-//   });
-
-//   const handleFormSubmit = async (event) => {
-//     event.preventDefault();
-
-//     try {
-//       const { data } = await addThought({
-//         variables: {
-//           thoughtText,
-//           thoughtAuthor: Auth.getProfile().data.username,
-//         },
-//       });
-
-//       setThoughtText("");
-//     } catch (err) {
-//       console.error(err);
-//     }
-//   };
-
-//   const handleChange = (event) => {
-//     const { name, value } = event.target;
-
-//     if (name === "thoughtText" && value.length <= 280) {
-//       setThoughtText(value);
-//     }
-//   };
 const WireframeForm = () => {
   const [websiteTitle, setWebsiteTitle] = useState('');
   const [primaryColor, setPrimaryColor] = useState('');
   const [secondaryColor, setSecondaryColor] = useState('');
   const [websitePurpose, setWebsitePurpose] = useState('');
   const [designStyle, setDesignStyle] = useState('');
-  const [apiResponseText, setApiResponseText] = useState('');
-  const [createdAt, setCreatedAt] = useState('');
-  const [formState, setFormState] = useState({ userText: '' });
+  
 
-  const [addWireframe, { error, data }] = useMutation(ADD_WIREFRAME);
+  const [addWireframe, { error }] = useMutation(ADD_WIREFRAME, {
+    update(cache, { data: { addWireframe } }) {
+      try {
+        const { wireframes } = cache.readQuery({ query: QUERY_WIREFRAMES });
+
+        cache.writeQuery({
+          query: QUERY_WIREFRAMES,
+          data: { wireframes: [addWireframe, ...wireframes] },
+        });
+
+      } catch (e) {
+        console.log('error:', error)
+        console.error(e);
+      }
+
+      // update me object's cache
+      const { me } = cache.readQuery({ query: QUERY_ME })|| { me: { wireframes: [] } };
+      const updatedMe = {
+        ...me,
+        wireframes: [...me.wireframes, addWireframe],
+      }
+
+      cache.writeQuery({
+        query: QUERY_ME,
+        // data: { me: { ...me, wireframes: [...me.wireframes, addWireframe] } },
+        data: { me: updatedMe },
+      });
+    },
+  });
+
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -93,6 +73,7 @@ const WireframeForm = () => {
       
       // setUserText('');
     } catch (err) {
+      console.log('error')
       console.log(err);
     }
   };

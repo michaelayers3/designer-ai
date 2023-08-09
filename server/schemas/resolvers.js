@@ -6,25 +6,24 @@ const { getOpenAICompletion} = require('../utils/openAI')
 const resolvers = {
   Query: {
     users: async () => {
-      return User.find().populate('thoughts');
+      return User.find().populate('wireframes');
     },
     user: async (parent, { username }) => {
-      return User.findOne({ username }).populate('thoughts');
+      return User.findOne({ username }).populate('wireframes');
     },
     wireframes: async (parent, {username}) => {
       const params = username ? { username } : {};
       return Wireframe.find().sort({ createdAt: -1 });
     },
-    // thoughts: async (parent, { username }) => {
-    //   const params = username ? { username } : {};
-    //   return Thought.find(params).sort({ createdAt: -1 });
-    // },
-    // thought: async (parent, { thoughtId }) => {
-    //   return Thought.findOne({ _id: thoughtId });
-    // },
+   
+    wireframe: async (parent, { wireframeId }) => {
+      return Wireframe.findOne({ _id: wireframeId });
+    },
+
+
     me: async (parent, args, context) => {
       if (context.user) {
-        return User.findOne({ _id: context.user._id }).populate('thoughts');
+        return User.findOne({ _id: context.user._id }).populate('wireframes');
       }
       throw new AuthenticationError('You need to be logged in!');
     },
@@ -54,98 +53,57 @@ const resolvers = {
       return { token, user };
     },
     addWireFrame: async (parent, { websiteTitle, primaryColor, secondaryColor, websitePurpose, designStyle, createdAt }, context) => {
-      // if (context.user) {
+      
         const messages = [
           {role: 'user', content: `Create me an HTML wireframe for a website with the following details: Title: ${websiteTitle}, Primary Color: ${primaryColor}, Secondary Color: ${secondaryColor}, Purpose: ${websitePurpose}, Design Style: ${designStyle}`}
         ];
           const completion = await getOpenAICompletion(messages);
           const apiResponseText = completion || 'Nope!';
-          // const apiResponseText  = completion?.data?.choices|| 'No response from API';
-          
-          // console.log('Resolver apiResponse:',apiResponseText)
+      
         const wireframe = await Wireframe.create({
-          // userText: userText,
           apiResponseText: apiResponseText[0].message.content,
           createdAt: createdAt,
+          websiteTitle: websiteTitle,
+          primaryColor: primaryColor,
+          secondaryColor: secondaryColor,
+          websitePurpose: websitePurpose,
+          designStyle: designStyle,
+          wireframeAuthor: context.user.username,
         });
-       console.log('ResolverPoo1:',apiResponseText[0].message.content)
-      //  console.log('ResolverPoo2:', completion.data.choices)
-        console.log('userText:' ,userText)
-        // console.log('apiResponseText:' ,apiResponseText)
-        // console.log('Wireframe:' ,wireframe)
 
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { wireframes: wireframe._id } },
+          { new: true }
+        );
+
+
+       console.log('ResolverPoo1:',apiResponseText[0].message.content)
+      console.log('ResolverPoo2:',)
 
         return wireframe;
         
         
         // throw new AuthenticationError('You need to be logged in!');
       },
-    // addThought: async (parent, { thoughtText }, context) => {
-    //   if (context.user) {
-    //     const thought = await Thought.create({
-    //       thoughtText,
-    //       thoughtAuthor: context.user.username,
-    //     });
+    
+    removeWireframe: async (parent, { wireframeId }, context) => {
+      if (context.user) {
+        const wireframe = await Wireframe.findOneAndDelete({
+          _id: wireframeId,
+          wireframeAuthor: context.user.username,
+        });
 
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $addToSet: { thoughts: thought._id } }
-    //     );
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $pull: { wireframes: wireframe._id } }
+        );
 
-    //     return thought;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
-    // addComment: async (parent, { thoughtId, commentText }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $addToSet: {
-    //           comments: { commentText, commentAuthor: context.user.username },
-    //         },
-    //       },
-    //       {
-    //         new: true,
-    //         runValidators: true,
-    //       }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
-    // removeThought: async (parent, { thoughtId }, context) => {
-    //   if (context.user) {
-    //     const thought = await Thought.findOneAndDelete({
-    //       _id: thoughtId,
-    //       thoughtAuthor: context.user.username,
-    //     });
-
-    //     await User.findOneAndUpdate(
-    //       { _id: context.user._id },
-    //       { $pull: { thoughts: thought._id } }
-    //     );
-
-    //     return thought;
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
-    // removeComment: async (parent, { thoughtId, commentId }, context) => {
-    //   if (context.user) {
-    //     return Thought.findOneAndUpdate(
-    //       { _id: thoughtId },
-    //       {
-    //         $pull: {
-    //           comments: {
-    //             _id: commentId,
-    //             commentAuthor: context.user.username,
-    //           },
-    //         },
-    //       },
-    //       { new: true }
-    //     );
-    //   }
-    //   throw new AuthenticationError('You need to be logged in!');
-    // },
+        return wireframe;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    
   },
 };
 

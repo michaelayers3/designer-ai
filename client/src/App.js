@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Landing from './pages/Landing/Landing';
 import NewDesign from './pages/Design/NewDesign';
-import EditDesign from './pages/Design/EditDesign';
+import SingleWireframe from './pages/Design/EditDesign';
 import Profile from './pages/Profile/Profile';
 // import Header from './components/Header';
 
@@ -58,7 +58,7 @@ function App() {
               />
               <Route
                 path="/wireframes/:wireframeId"
-                element={<EditDesign />}
+                element={<SingleWireframe />}
                 />
             </Routes>
         </div>

@@ -41,9 +41,10 @@ const Profile = () => {
       <Header />
         <ProfileContainer>
         <ProfileTitle>
-          Saved Designs
+        {`${user.username}'s`} Saved Designs
         </ProfileTitle>
         <DesignListContainer>
+          
           <WireframeList
             wireframes={user.wireframes}
             title={`${user.username}'s wireframes...`}

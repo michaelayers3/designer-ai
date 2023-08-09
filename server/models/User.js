@@ -22,7 +22,7 @@ const userSchema = new Schema({
   wireframes: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'wireframe',
+      ref: 'Wireframe',
     },
   ],
 });

@@ -14,7 +14,7 @@ export const QUERY_USER = gql`
         websitePurpose
         designStyle
         apiResponseText
-        userText
+        
         wireframeAuthor
         createdAt
       }
@@ -23,7 +23,7 @@ export const QUERY_USER = gql`
 `;
 
 export const QUERY_WIREFRAMES = gql`
-  query wireframes {
+  query getWireframes {
     wireframes {
       _id
       websiteTitle
@@ -32,7 +32,7 @@ export const QUERY_WIREFRAMES = gql`
       websitePurpose
       designStyle
       apiResponseText
-      userText
+      
       wireframeAuthor
       createdAt
     }
@@ -49,7 +49,7 @@ export const QUERY_SINGLE_WIREFRAME = gql`
       websitePurpose
       designStyle
       apiResponseText
-      userText
+      
       wireframeAuthor
       createdAt
     }
@@ -70,7 +70,6 @@ export const QUERY_ME = gql`
         websitePurpose
         designStyle
         apiResponseText
-        userText
         wireframeAuthor
         createdAt
       }

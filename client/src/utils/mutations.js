@@ -25,8 +25,8 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_WIREFRAME = gql`
-  mutation addWireFrame($websiteTitle: String, $primaryColor: String, $secondaryColor: String, $websitePurpose: String, $designStyle: String, $apiResponseText: String, $userText: String, $wireframeAuthor: String, $createdAt: String) {
-    addWireFrame(websiteTitle: $websiteTitle, primaryColor: $primaryColor, secondaryColor: $secondaryColor, websitePurpose: $websitePurpose, designStyle: $designStyle, apiResponseText: $apiResponseText, userText: $userText, wireframeAuthor: $wireframeAuthor, createdAt: $createdAt) {
+  mutation addWireFrame($websiteTitle: String, $primaryColor: String, $secondaryColor: String, $websitePurpose: String, $designStyle: String, $apiResponseText: String, $wireframeAuthor: String, $createdAt: String) {
+    addWireFrame(websiteTitle: $websiteTitle, primaryColor: $primaryColor, secondaryColor: $secondaryColor, websitePurpose: $websitePurpose, designStyle: $designStyle, apiResponseText: $apiResponseText, wireframeAuthor: $wireframeAuthor, createdAt: $createdAt) {
       _id
       websiteTitle
       primaryColor
@@ -34,7 +34,22 @@ export const ADD_WIREFRAME = gql`
       websitePurpose
       designStyle
       apiResponseText
-      userText
+      wireframeAuthor
+      createdAt
+    }
+  }
+`;
+
+export const REMOVE_WIREFRAME = gql`
+  mutation removeWireframe($wireframeId: ID!) {
+    removeWireframe(wireframeId: $wireframeId) {
+      _id
+      websiteTitle
+      primaryColor
+      secondaryColor
+      websitePurpose
+      designStyle
+      apiResponseText
       wireframeAuthor
       createdAt
     }
