@@ -10,6 +10,7 @@ import {
   LoginSection,
   LightButton,
   DarkButton,
+  LandingSubText,
 } from "./LandingStyle";
 
 // Import the components to be displayed when Login or Sign Up is clicked
@@ -31,7 +32,14 @@ const Home = () => {
       <LandingPage>
         <TitleSection>
           <LandingTitle>DESIGNER AI</LandingTitle>
-          <LandingSubtitle>Virtual Website Builder</LandingSubtitle>
+          <LandingSubText>&lt;!doctype&gt; </LandingSubText>
+          <LandingSubText>&lt;html&gt;</LandingSubText>
+          <LandingSubText>&lt;head&gt;</LandingSubText>
+          <LandingSubtitle>
+            &lt;title&gt; Virtual Webiste Builder &lt;title&gt;
+          </LandingSubtitle>
+          <LandingSubText>&lt;/head&gt;</LandingSubText>
+          <LandingSubText>&lt;/html&gt;</LandingSubText>
         </TitleSection>
         <LoginSection>
           {/* Check if either Login or Sign Up button is clicked to show the respective component */}
@@ -50,9 +58,13 @@ const Home = () => {
               {!showLogin && !showSignup && (
                 <>
                   {/* Set the state variable to show the Login component */}
-                  <LightButton onClick={() => setShowLogin(true)}>Log In</LightButton>
+                  <LightButton onClick={() => setShowLogin(true)}>
+                    Log In
+                  </LightButton>
                   {/* Set the state variable to show the Signup component */}
-                  <DarkButton onClick={() => setShowSignup(true)}>Sign Up</DarkButton>
+                  <DarkButton onClick={() => setShowSignup(true)}>
+                    Sign Up
+                  </DarkButton>
                 </>
               )}
               {/* Display the Login component when the Login button is clicked */}

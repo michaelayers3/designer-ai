@@ -110,3 +110,12 @@ export const DarkButton = styled.button`
     height: 90px;
   }
 `;
+
+export const LandingSubText = styled.h3`
+  font-size: 1.5rem;
+  color: ${colors.dark};
+
+  @media (max-width: 768px) {
+    font-size: 3rem;
+  }
+`;
