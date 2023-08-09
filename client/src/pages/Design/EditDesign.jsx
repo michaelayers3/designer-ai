@@ -1,12 +1,13 @@
 import React from "react";
 
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
 import Header from "../../components/Header";
 import CodeDisplay from "../../components/CodeDisplay/CodeDisplay";
 
-import { QUERY_SINGLE_WIREFRAME } from "../../utils/queries";
+import Auth from "../../utils/auth";
+import { QUERY_SINGLE_WIREFRAME, QUERY_USER, QUERY_ME } from "../../utils/queries"; // Make sure to import QUERY_USER and QUERY_ME
 import {
   DesignContainer,
   DesignDetailsContainer,
@@ -16,28 +17,44 @@ import {
 const SingleWireframe = () => {
   const { wireframeId } = useParams();
 
-  const { loading, data } = useQuery(QUERY_SINGLE_WIREFRAME, {
+  const { loading: wireframeLoading, data: wireframeData } = useQuery(QUERY_SINGLE_WIREFRAME, {
     variables: { wireframeId: wireframeId },
   });
 
-  const wireframe = data?.wireframe || {};
+  const wireframe = wireframeData?.wireframe || {};
   console.log("wireframe title", wireframe.websiteTitle);
 
-  if (loading) {
-    return <div>bingbong...</div>;
+  const { username: userParam } = useParams();
+
+  const { loading: userLoading, data: userData } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
+    variables: { username: userParam },
+  });
+
+  const user = userData?.me || userData?.user || {};
+
+  if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
+    return <Navigate to="/me" />;
   }
+
+  if (wireframeLoading || userLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user?.username) {
+    return <Navigate to="/" />;
+  }
+
   return (
     <>
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
-         <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
-            <CodeDisplay code= {wireframe.apiResponseText || " "} />
+          <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
+          <CodeDisplay code={wireframe.apiResponseText || " "} />
         </DesignDetailsContainer>
-       </DesignContainer>
-       </>
+      </DesignContainer>
+    </>
   );
-
 };
 
 export default SingleWireframe;

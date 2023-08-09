@@ -18,8 +18,6 @@ const Profile = () => {
     variables: { username: userParam },
   });
 
-  console.log("data", data);
-
   const user = data?.me || data?.user || {};
   // navigate to personal profile page if username is yours
   if (Auth.loggedIn() && Auth.getProfile().data.username === userParam) {
@@ -29,8 +27,6 @@ const Profile = () => {
   if (loading) {
     return <div>Loading...</div>;
   }
-
-  console.log("user", user);
 
   if (!user?.username) {
     return <Navigate to="/" />
