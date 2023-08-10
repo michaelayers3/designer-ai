@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
+import Footer from "../../components/Footer"
 import Header from "../../components/Header";
 import CodeDisplay from "../../components/CodeDisplay/CodeDisplay";
 
@@ -54,6 +55,7 @@ const SingleWireframe = () => {
           <CodeDisplay code={wireframe.apiResponseText || " "} />
         </DesignDetailsContainer>
       </DesignContainer>
+      <Footer/>
     </>
   );
 };

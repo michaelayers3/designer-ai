@@ -1,11 +1,11 @@
-import { React, useState } from "react";
+import { React } from "react";
 import {useParams} from 'react-router-dom';
 import "codemirror/lib/codemirror.css";
 import "codemirror/theme/nord.css";
 import "codemirror/mode/xml/xml";
 import { useMutation } from "@apollo/client";
 import { UPDATE_WIREFRAME } from "../../utils/mutations";
-import { CodeEditor, EditorContainer, SaveChangesButton } from "./EditorStyle";
+import { CodeEditor, SaveChangesButton } from "./EditorStyle";
 
 export default function Editor({ language, value, onChange }) {
   const { wireframeId } = useParams();

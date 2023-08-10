@@ -1,15 +1,16 @@
-import React, {useEffect} from 'react';
-import { Navigate, useParams } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
+import React, { useEffect } from "react";
+import { Navigate, useParams } from "react-router-dom";
+import { useQuery } from "@apollo/client";
 
 // import NewDesignForm from '../../components/NewDesignForm';
-import WireframeList from '../../components/DesignList';
-import Header from "../../components/Header"
+import WireframeList from "../../components/DesignList";
+import Header from "../../components/Header";
 
-import { QUERY_USER, QUERY_ME } from '../../utils/queries';
+import { QUERY_USER, QUERY_ME } from "../../utils/queries";
 
-import Auth from '../../utils/auth';
-import { DesignListContainer, ProfileContainer, ProfileTitle } from './ProfileStyle';
+import Auth from "../../utils/auth";
+import { DesignListContainer, ProfileContainer, ProfileTitle } from "./ProfileStyle";
+import Footer from "../../components/Footer";
 
 const Profile = () => {
   const { username: userParam } = useParams();
@@ -33,26 +34,24 @@ const Profile = () => {
   }
 
   if (!user?.username) {
-    return <Navigate to="/" />
+    return <Navigate to="/" />;
   }
 
   return (
     <>
       <Header />
-        <ProfileContainer>
-        <ProfileTitle>
-        {`${user.username}'s`} Saved Designs
-        </ProfileTitle>
+      <ProfileContainer>
+        <ProfileTitle>{`${user.username}'s`} Saved Designs</ProfileTitle>
         <DesignListContainer>
-          
           <WireframeList
             wireframes={user.wireframes}
             title={`${user.username}'s wireframes...`}
             showTitle={false}
             showUsername={false}
           />
-          </DesignListContainer>
-        </ProfileContainer>
+        </DesignListContainer>
+      </ProfileContainer>
+      <Footer />
     </>
   );
 };

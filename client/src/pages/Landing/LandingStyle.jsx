@@ -15,6 +15,7 @@ export const TitleSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 55%;
   height: 100vh;
   background-color: ${colors.jet};
@@ -30,9 +31,10 @@ export const LandingTitle = styled.h1`
   font-weight: bold;
   color: ${colors.light};
   letter-spacing: 0.2em;
+  
 
   @media (max-width: 768px) {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
 `;
 
@@ -41,7 +43,8 @@ export const LandingSubtitle = styled.h2`
   font-size: 2.3rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    display: none;
+    // font-size: 1rem;
   }
 `;
 
@@ -60,7 +63,7 @@ export const LoginSection = styled.section`
     height: 80vh;
     padding-top: 30px;
     justify-content: start;
-    gap: 50px;
+    gap: 20px;
   }
 `;
 
@@ -68,9 +71,10 @@ export const LoginSectionTitle = styled.h1`
   color: ${colors.jet};
   font-size: 5rem;
   margin-bottom: 5rem;
+
   @media (max-width: 768px) {
-    font-size: 4rem;
-    margin-bottom: 2rem;
+    font-size: 2rem;
+    margin-bottom: 1rem;
   }
 `;
 
@@ -112,7 +116,7 @@ export const LightButton = styled.button`
   @media (max-width: 768px) {
     margin-top: 30px;
     width: 250px;
-    height: 90px;
+    height: 50px;
   }
 `;
 
@@ -134,7 +138,7 @@ export const DarkButton = styled.button`
   @media (max-width: 768px) {
     margin-top: 30px;
     width: 250px;
-    height: 90px;
+    height: 50px;
   }
 `;
 
@@ -144,5 +148,6 @@ export const LandingSubText = styled.h2`
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
+    display: none;
   }
 `;

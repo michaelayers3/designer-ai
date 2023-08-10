@@ -5,6 +5,7 @@ import { QUERY_USER, QUERY_ME } from '../../utils/queries';
 
 
 import WireframeForm from '../../components/NewDesignForm';
+import Footer from "../../components/Footer"
 import Header from "../../components/Header";
 import Auth from "../../utils/auth"
 import {
@@ -43,6 +44,7 @@ const NewWireframeForm = () => {
             <WireframeForm />
         </DesignDetailsContainer>
       </DesignContainer>
+      <Footer/>
     </>
   );
 };
