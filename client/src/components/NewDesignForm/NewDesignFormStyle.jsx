@@ -25,7 +25,7 @@ export const DesignFormInput = styled.input`
   outline: none;
   border-radius: 15px;
   padding: 15px;
-  color: ${colors.dark};
+  color: ${colors.jet};
   font-size: 2rem;
 
   &:focus {

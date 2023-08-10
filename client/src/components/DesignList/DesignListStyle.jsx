@@ -1,37 +1,37 @@
 import styled from "styled-components";
 import colors from "../../colors";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const DesignContainer = styled.div`
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
-	min-width: 400px;
+  min-width: 400px;
   max-width: 700px;
-	min-height: 130px;
-	border: 8px solid ${colors.dark};
-	background-color: white;
-	border-radius: 100px;
-	justify-content: center;
-	align-items: center;
+  min-height: 130px;
+  border: 8px solid ${colors.dark};
+  background-color: white;
+  border-radius: 15px;
+  justify-content: center;
+  align-items: center;
   text-align: center;
   padding: 25px;
 
-	&:hover{
-		border: 8px solid ${colors.light};
-	}
-`
+  &:hover {
+    border: 8px solid ${colors.light};
+  }
+`;
 
 export const LinkContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  
-  &:last-child{
+
+  &:last-child {
     border-right: none;
   }
-`
+`;
 
 export const LinkButton = styled(Link)`
   font-size: 2.5rem;
@@ -39,19 +39,19 @@ export const LinkButton = styled(Link)`
   color: ${colors.dark};
   border-right: 4px solid ${colors.light};
   padding: 15px;
-  
-  &:hover{
+
+  &:hover {
     color: ${colors.light};
     cursor: pointer;
     text-decoration: none;
   }
 
-  &:last-child{
+  &:last-child {
     border-right: none;
   }
-`
+`;
 
 export const DesignTitle = styled.h1`
-	color: ${colors.dark};
-	font-size: 2.7rem;
-`
+  color: ${colors.dark};
+  font-size: 2.7rem;
+`;
