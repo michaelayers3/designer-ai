@@ -96,7 +96,7 @@ export const LoginSectionContainer = styled.div`
 export const LightButton = styled.button`
   border: 5px solid ${colors.jet};
   color: ${colors.jet};
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   background-color: white;
   border-radius: 15px;
@@ -119,7 +119,7 @@ export const LightButton = styled.button`
 export const DarkButton = styled.button`
   border: none;
   color: white;
-  font-size: 2.2rem;
+  font-size: 1.8rem;
   font-weight: bold;
   background-color: ${colors.jet};
   border-radius: 15px;

@@ -8,6 +8,7 @@ export const DesignContainer = styled.section`
   align-items: center;
   padding: 25px;
   text-align: center;
+  background-color: ${colors.mid};
 `;
 
 export const DesignTitle = styled.h1`
@@ -20,7 +21,7 @@ export const DesignDetailsContainer = styled.div`
   flex-direction: column;
   justify-contents: center;
   align-items: center;
-  background-color: ${colors.mid};
+  background-color: ${colors.light};
   border-radius: 100px;
   padding: 25px;
   width: 90vw;
