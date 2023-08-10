@@ -17,7 +17,7 @@ export const TitleSection = styled.section`
   align-items: center;
   width: 55%;
   height: 100vh;
-  background-color: ${colors.mid};
+  background-color: ${colors.jet};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -28,7 +28,7 @@ export const TitleSection = styled.section`
 export const LandingTitle = styled.h1`
   font-size: 6rem;
   font-weight: bold;
-  color: ${colors.jet};
+  color: ${colors.light};
   letter-spacing: 0.2em;
 
   @media (max-width: 768px) {
@@ -53,6 +53,7 @@ export const LoginSection = styled.section`
   width: 45%;
   height: 100vh;
   gap: 120px;
+  background-color: ${colors.light};
 
   @media (max-width: 768px) {
     width: 100%;
@@ -63,19 +64,48 @@ export const LoginSection = styled.section`
   }
 `;
 
+export const LoginSectionTitle = styled.h1`
+  color: ${colors.jet};
+  font-size: 5rem;
+  margin-bottom: 5rem;
+  @media (max-width: 768px) {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+`;
+
+export const LoginSectionContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  background-color: ${colors.lightest};
+  width: 80%;
+  height: 80%;
+  border-radius: 15px;
+  padding: 50px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 60%;
+    padding: 20px;
+  }
+`;
+
 export const LightButton = styled.button`
-  border: 5px solid ${colors.dark};
-  color: ${colors.dark};
-  font-size: 2.6rem;
+  border: 5px solid ${colors.jet};
+  color: ${colors.jet};
+  font-size: 2.2rem;
   font-weight: bold;
   background-color: white;
-  border-radius: 100px;
-  width: 350px;
-  height: 140px;
+  border-radius: 15px;
+  width: 15rem;
+  height: 4rem;
 
   &:hover {
-    border-color: ${colors.mid};
-    color: ${colors.mid};
+    border-color: ${colors.darkest};
+    color: ${colors.darkest};
     cursor: pointer;
   }
 
@@ -89,15 +119,15 @@ export const LightButton = styled.button`
 export const DarkButton = styled.button`
   border: none;
   color: white;
-  font-size: 2.6rem;
+  font-size: 2.2rem;
   font-weight: bold;
-  background-color: ${colors.dark};
-  border-radius: 100px;
-  width: 350px;
-  height: 140px;
+  background-color: ${colors.jet};
+  border-radius: 15px;
+  width: 15rem;
+  height: 4rem;
 
   &:hover {
-    background-color: ${colors.mid};
+    background-color: ${colors.darkest};
     cursor: pointer;
   }
 
@@ -109,7 +139,7 @@ export const DarkButton = styled.button`
 `;
 
 export const LandingSubText = styled.h2`
-  color: ${colors.dark};
+  color: ${colors.darkest};
   font-size: 1.2rem;
 
   @media (max-width: 768px) {
