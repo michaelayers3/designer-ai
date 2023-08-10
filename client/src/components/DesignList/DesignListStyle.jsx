@@ -9,8 +9,8 @@ export const DesignContainer = styled.div`
   min-width: 400px;
   max-width: 700px;
   min-height: 130px;
-  border: 8px solid ${colors.dark};
-  background-color: white;
+  border: 5px solid ${colors.darkest};
+  background-color: ${colors.lightest};
   border-radius: 15px;
   justify-content: center;
   align-items: center;
@@ -20,6 +20,14 @@ export const DesignContainer = styled.div`
   &:hover {
     border: 8px solid ${colors.light};
   }
+
+  @media (max-width: 800px) {
+    min-width: 300px;
+    max-width: 500px;
+    min-height: 100px;
+    padding: 15px;
+  }
+
 `;
 
 export const LinkContainer = styled.div`

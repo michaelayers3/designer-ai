@@ -10,7 +10,7 @@ export const ProfileContainer = styled.section`
   background-color: ${colors.light};
   border-radius: 15px;
   height: 100vh;
-  padding: 2rem;
+  box-shadow: 0 0 10px 5px ${colors.dark};
 `;
 
 export const DesignListContainer = styled.div`
@@ -25,7 +25,10 @@ export const DesignListContainer = styled.div`
 
 export const ProfileTitle = styled.h1`
   font-size: 5rem;
-  color: ${colors.darkest};
+  color: ${colors.light};
   text-align: center;
   padding: 20px;
+  background-color: ${colors.jet};
+  width: 100%;
+  border-radius: 15px 15px 0 0;
 `;

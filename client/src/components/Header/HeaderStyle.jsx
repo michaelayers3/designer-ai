@@ -36,7 +36,6 @@ export const HeaderTitle = styled(Link)`
 export const MenuTitle = styled.div`
   display: flex;
   flex-direction: column;
-  // border: 2px solid black;
   position: fixed;
   top: 15px;
   right: 80px;
@@ -45,11 +44,11 @@ export const MenuTitle = styled.div`
 `;
 
 export const LogoutButton = styled.h2`
-  color: ${colors.mid};
+  color: ${colors.darkest};
   width: 140px;
 
   &:hover {
-    color: ${colors.light};
+    color: ${colors.lightest};
     cursor: pointer;
   }
 `;
@@ -65,14 +64,14 @@ export const ButtonContainer = styled.div`
 `;
 
 export const MenuButtons = styled(Link)`
-  color: black;
+  color: ${colors.jet};
   font-size: 3.3rem;
   border-bottom: 8px solid ${colors.dark};
   padding: 20px;
 
   &:hover {
     text-decoration: none;
-    color: ${colors.mid};
+    color: ${colors.lightest};
     cursor: pointer;
   }
 
@@ -100,11 +99,11 @@ export const LightButton = styled.button`
 
 export const DarkButton = styled.button`
   border: none;
-  color: white;
+  color: ${colors.light};
   font-size: 1.5rem;
   font-weight: bold;
   background-color: ${colors.dark};
-  border-radius: 100px;
+  border-radius: 15px;
   width: 200px;
   height: 50px;
 

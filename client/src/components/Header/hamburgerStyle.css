@@ -1,7 +1,7 @@
 :root {
-    --dark-color: #36286B;
-    --mid-color: #4A359B;
-    --light-color: #AEA3D9;
+    --dark-color: #343434;
+    --mid-color: #AAAAAA;
+    --light-color: #DDDDDD;
 }
 
 .toggler{
@@ -91,7 +91,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
 .menu{
     z-index: 1;
     position: absolute;
-    background: rgba(255,255,255, 100%);
+    background: var(--light-color);
     width: 0%;
     height: 100vh;
     right: 0px;

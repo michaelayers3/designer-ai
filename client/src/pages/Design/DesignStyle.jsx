@@ -8,12 +8,16 @@ export const DesignContainer = styled.section`
   align-items: center;
   padding: 25px;
   text-align: center;
-  background-color: ${colors.mid};
 `;
 
 export const DesignTitle = styled.h1`
   font-size: 3.5rem;
-  color: ${colors.darkest};
+  color: ${colors.light};
+  width: 100%;
+  border-radius: 15px 15px 0 0;
+  background-color: ${colors.jet};
+  padding: 20px;
+  margin-bottom: 20px;
 `;
 
 export const DesignDetailsContainer = styled.div`
@@ -23,7 +27,6 @@ export const DesignDetailsContainer = styled.div`
   align-items: center;
   background-color: ${colors.light};
   border-radius: 15px;
-  padding: 25px;
   width: 90vw;
   box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 `;
