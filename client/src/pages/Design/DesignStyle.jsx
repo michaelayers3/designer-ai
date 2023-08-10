@@ -13,7 +13,7 @@ export const DesignContainer = styled.section`
 
 export const DesignTitle = styled.h1`
   font-size: 3.5rem;
-  color: white;
+  color: ${colors.darkest};
 `;
 
 export const DesignDetailsContainer = styled.div`
