@@ -36,7 +36,7 @@ const Home = () => {
           <LandingSubText>&lt;html&gt;</LandingSubText>
           <LandingSubText>&lt;head&gt;</LandingSubText>
           <LandingSubtitle>
-            &lt;title&gt;Virtual Website Builder&lt;title&gt;
+            &lt;h2&gt;Virtual Website Builder&lt;h2&gt;
           </LandingSubtitle>
           <LandingSubText>&lt;/head&gt;</LandingSubText>
           <LandingSubText>&lt;/html&gt;</LandingSubText>

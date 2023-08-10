@@ -26,8 +26,10 @@ export const TitleSection = styled.section`
 `;
 
 export const LandingTitle = styled.h1`
-  font-size: 5rem;
+  font-size: 6rem;
+  font-weight: bold;
   color: ${colors.jet};
+  letter-spacing: 0.2em;
 
   @media (max-width: 768px) {
     font-size: 3rem;
@@ -36,7 +38,7 @@ export const LandingTitle = styled.h1`
 
 export const LandingSubtitle = styled.h2`
   color: ${colors.darkest};
-  font-size: 2.5rem;
+  font-size: 2.3rem;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
@@ -108,7 +110,7 @@ export const DarkButton = styled.button`
 
 export const LandingSubText = styled.h2`
   color: ${colors.dark};
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 
   @media (max-width: 768px) {
     font-size: 1.5rem;
