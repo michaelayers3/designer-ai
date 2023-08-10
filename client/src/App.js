@@ -49,10 +49,6 @@ function App() {
                 element={<Profile />}
               />
               <Route 
-                path="/profiles/:username"
-                element={<Profile />}
-              />
-              <Route 
                 path="/design"
                 element={<NewDesign />}
               />

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, Navigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 
 import { ADD_WIREFRAME } from "../../utils/mutations";
@@ -34,9 +34,8 @@ const WireframeForm = () => {
           query: QUERY_WIREFRAMES,
           data: { wireframes: [addWireframe, ...wireframes] },
         })
-      } catch (e) {
-        console.log("error:", error);
-        console.error(e);
+      } catch (error) {
+        console.log('add to query:', error);
       }
 
       // update me object's cache
@@ -52,17 +51,17 @@ const WireframeForm = () => {
         data: { me: updatedMe },
       });
     },
+    refetchQueries: [{query: QUERY_ME}],
+
     
-    // onCompleted: ({addWireframe}) => {
-    //   navigate(`/wireframes/${addWireframe._id}`);
-    // },
+    
   });
-
-  console.log("addWireframe:", addWireframe._id);
-
+  
+  console.log("addWireframe:", addWireframe.data);
+  
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-
+    
     try {
       const { data } = await addWireframe({
         variables: {
@@ -71,13 +70,16 @@ const WireframeForm = () => {
           secondaryColor,
           websitePurpose,
           designStyle,
+          addTypename: false,
         },
       });
-
+      
       // setUserText('');
     } catch (err) {
-      console.log("error");
-      console.log(err);
+      console.log(addWireframe.data);
+      
+        navigate(`/me`);
+      console.log('add wireframe:', err);
     }
   };
 
@@ -163,6 +165,9 @@ const WireframeForm = () => {
           ) : (
             <>
               <SubmitButton type="submit">Create New Design</SubmitButton>
+              {/* {!loading && (
+            <Link clasname = 'col-12 my-3 bg success text-white p-3' to={`/wireframes/${addWireframe._id}`}>Go to My Profile</Link>
+          )} */}
               {/* {error && (
                 <div className="col-12 my-3 bg-danger text-white p-3">{error.message}</div>
               )} */}

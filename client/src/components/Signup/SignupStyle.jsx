@@ -11,7 +11,7 @@ export const FormContainer = styled.form`
 `;
 
 export const FormTitle = styled.h1`
-  color: ${colors.dark};
+  color: ${colors.jet};
   font-size: 4rem;
 
   @media (max-width: 768px) {
@@ -20,18 +20,19 @@ export const FormTitle = styled.h1`
 `;
 
 export const SubmitButton = styled.button`
-  border: 5px solid ${colors.dark};
-  color: ${colors.dark};
+  border: 5px solid ${colors.jet};
+  color: ${colors.jet};
   font-size: 2.6rem;
   font-weight: bold;
   background-color: white;
-  border-radius: 100px;
-  width: 350px;
-  height: 80px;
+  border-radius: 15px;
+  width: 15rem;
+  height: 4rem;
+  margin-top: 1.75rem;
 
   &:hover {
-    border-color: ${colors.mid};
-    color: ${colors.mid};
+    background-color: ${colors.jet};
+    color: ${colors.lightest};
     cursor: pointer;
   }
 

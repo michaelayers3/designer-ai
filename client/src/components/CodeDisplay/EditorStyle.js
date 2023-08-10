@@ -9,23 +9,45 @@ export const EditorContainer = styled.div`
   flex-direction: column;
   margin-bottom: 20px;
   align-items: center;
-`;
+  `;
 
 export const SaveChangesButton = styled.button`
-  margin-top: 2rem;
-  width: 150px;
+border: 5px solid ${colors.jet};
+color: ${colors.jet};
+font-size: 2.6rem;
+font-weight: bold;
+background-color: white;
+border-radius: 15px;
+width: 25rem;
+height: 4rem;
+margin-top: 1.75rem;
+
+&:hover {
+  background-color: ${colors.jet};
+  color: ${colors.lightest};
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  margin-top: 30px;
+  width: 250px;
+  height: 90px;
+}
 `;
 
 export const EditorTitle = styled.div`
   background-color: ${colors.dark};
   font-size: 2rem;
-  color: white;
+  color: ${colors.jet};
   width: 100%;
+  font-weight: bold;
+  padding: 1rem;
 `;
 
 export const EditorFrame = styled.iframe`
   height: 70vh;
   width: 80vw;
+  background-color: white;
   border: 5px solid ${colors.dark};
   border-radius: 1rem 1rem 0 0;
 `;

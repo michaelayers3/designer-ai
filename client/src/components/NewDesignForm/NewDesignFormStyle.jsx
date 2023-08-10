@@ -23,31 +23,36 @@ export const DesignFormInput = styled.input`
   border: 5px solid ${colors.dark};
   width: 60vw;
   outline: none;
-  border-radius: 100px;
+  border-radius: 15px;
   padding: 15px;
-  color: ${colors.dark};
+  color: ${colors.jet};
   font-size: 2rem;
+
+  &:focus {
+    border: 5px solid ${colors.jet};
+  }
 `;
 
 export const DesignInputTitle = styled.h4`
   margin-top: 2rem;
-  color: white;
+  color: ${colors.jet};
   text-align: left;
 `;
 
 export const SubmitButton = styled.button`
-  border: none;
-  color: white;
-  font-size: 1.5rem;
-  border-radius: 100px;
-
+  color: ${colors.jet};
+  border: 5px solid ${colors.jet};
+  background-color: ${colors.lightest};
+  font-size: 1.8rem;
+  border-radius: 15px;
   height: 80px;
-  width: 220px;
-  background-color: ${colors.dark};
+  width: 20rem;
   margin-top: 3rem;
+  font-weight: bold;
 
   &:hover {
     cursor: pointer;
-    background-color: ${colors.light};
+    background-color: ${colors.jet};
+    color: ${colors.lightest};
   }
 `;

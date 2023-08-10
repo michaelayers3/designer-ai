@@ -32,7 +32,6 @@ export const QUERY_WIREFRAMES = gql`
       websitePurpose
       designStyle
       apiResponseText
-      
       wireframeAuthor
       createdAt
     }

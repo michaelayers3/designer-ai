@@ -1,7 +1,10 @@
 const colors = {
-	dark: '#36286B', 
-	mid: '#4A359B',
-	light: '#AEA3D9',
+  darkest: "#AAAAAA",
+  dark: "#BBBBBB",
+  mid: "#CCCCCC",
+  light: "#DDDDDD",
+  lightest: "#EEEEEE",
+  jet: "#343434",
 };
 
 export default colors;
