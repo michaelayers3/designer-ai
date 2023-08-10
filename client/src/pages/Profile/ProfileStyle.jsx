@@ -31,4 +31,8 @@ export const ProfileTitle = styled.h1`
   background-color: ${colors.jet};
   width: 100%;
   border-radius: 15px 15px 0 0;
+
+  @media (max-width: 768px) {
+    font-size: 2.5rem;
+  }
 `;

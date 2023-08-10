@@ -57,9 +57,17 @@ export const LinkButton = styled(Link)`
   &:last-child {
     border-right: none;
   }
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;
 
 export const DesignTitle = styled.h1`
   color: ${colors.dark};
   font-size: 2.7rem;
+
+  @media (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;

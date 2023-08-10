@@ -19,7 +19,7 @@ export const FormTitle = styled.h1`
   }
 `;
 
-export const SubmitButton = styled.button`
+export const LoginButton = styled.button`
   border: 5px solid ${colors.jet};
   color: ${colors.jet};
   font-size: 2.6rem;
@@ -37,8 +37,12 @@ export const SubmitButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    margin-top: 30px;
-    width: 250px;
-    height: 90px;
+    margin-top: 5px;
+    border: 2px solid ${colors.jet};
+    width: 150px;
+    height: 50px;
+    font-size: 1.5rem;
   }
 `;
+
+

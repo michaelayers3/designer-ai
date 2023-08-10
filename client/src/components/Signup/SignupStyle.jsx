@@ -37,8 +37,10 @@ export const SubmitButton = styled.button`
   }
 
   @media (max-width: 768px) {
-    margin-top: 30px;
-    width: 250px;
+    margin-top: 5px;
+    border: 2px solid ${colors.jet};
+    width: 175px;
     height: 90px;
+    font-size: 1.5rem;
   }
 `;

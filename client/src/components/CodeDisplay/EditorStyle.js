@@ -29,9 +29,11 @@ margin-top: 1.75rem;
 }
 
 @media (max-width: 768px) {
+  border: 2px solid ${colors.jet};
   margin-top: 30px;
-  width: 250px;
-  height: 90px;
+  width: 180px;
+  height: 75px;
+  font-size: 1.5rem;
 }
 `;
 
@@ -42,6 +44,10 @@ export const EditorTitle = styled.div`
   width: 100%;
   font-weight: bold;
   padding: 1rem;
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+  }
 `;
 
 export const EditorFrame = styled.iframe`

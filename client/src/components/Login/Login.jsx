@@ -3,7 +3,7 @@ import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
 import Auth from "../../utils/auth";
-import { FormContainer, FormTitle, SubmitButton } from "./LoginStyle";
+import { FormContainer, FormTitle, LoginButton } from "./LoginStyle";
 
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: "", password: "" });
@@ -56,7 +56,7 @@ const Login = (props) => {
           value={formState.password}
           onChange={handleChange}
         />
-        <SubmitButton type="submit">Submit</SubmitButton>
+        <LoginButton type="submit">Submit</LoginButton>
 
       {error && <div className="my-3 p-3 bg-danger text-white">{error.message}</div>}
     </FormContainer>

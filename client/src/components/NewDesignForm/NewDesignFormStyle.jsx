@@ -17,7 +17,14 @@ export const FormContainer = styled.form`
   padding: 50px;
 `;
 
-export const InputContainer = styled.div``;
+export const InputContainer = styled.div`
+`;
+
+export const ColorInputContainer = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+`
 
 export const DesignFormInput = styled.input`
   border: 5px solid ${colors.dark};
@@ -27,6 +34,22 @@ export const DesignFormInput = styled.input`
   padding: 15px;
   color: ${colors.jet};
   font-size: 2rem;
+  height: 4rem;
+
+  &:focus {
+    border: 5px solid ${colors.jet};
+  }
+`;
+
+export const ColorFormInput = styled.input`
+  border: 5px solid ${colors.dark};
+  width: 20vw;
+  outline: none;
+  border-radius: 15px;
+  padding: 15px;
+  color: ${colors.jet};
+  font-size: 2rem;
+  height: 10rem;
 
   &:focus {
     border: 5px solid ${colors.jet};

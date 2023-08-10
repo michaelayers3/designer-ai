@@ -32,6 +32,12 @@
     justify-content: center;
 }
 
+@media (max-width: 768px) {
+    .hamburger{
+        opacity: 33%;
+    }
+}
+
 /* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
 
 .hamburger > div{
@@ -109,7 +115,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     width: 500px;
 }
 
-@media (max-width: 479px) {
+@media (max-width: 768px) {
     .toggler:checked ~ .menu {
         width: 100vw;
     }

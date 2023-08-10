@@ -53,6 +53,7 @@ export const LoginSection = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
   width: 45%;
   height: 100vh;
   gap: 120px;
@@ -73,6 +74,7 @@ export const LoginSectionTitle = styled.h1`
   margin-bottom: 5rem;
 
   @media (max-width: 768px) {
+    display: none;
     font-size: 2rem;
     margin-bottom: 1rem;
   }

@@ -12,6 +12,8 @@ import {
   DesignInputTitle,
   FormContainer,
   SubmitButton,
+  ColorFormInput,
+  ColorInputContainer,
 } from "./NewDesignFormStyle";
 
 import Auth from "../../utils/auth";
@@ -118,26 +120,6 @@ const WireframeForm = () => {
             ></DesignFormInput>
           </InputContainer>
           <InputContainer>
-            <DesignInputTitle>Primary Color</DesignInputTitle>
-            <DesignFormInput
-              name="primaryColor"
-              placeholder="Primary Color..."
-              type="color"
-              value={primaryColor}
-              onChange={handleChange}
-            ></DesignFormInput>
-          </InputContainer>
-          <InputContainer>
-            <DesignInputTitle>Secondary Color</DesignInputTitle>
-            <DesignFormInput
-              name="secondaryColor"
-              placeholder="Secondary Color..."
-              type="color"
-              value={secondaryColor}
-              onChange={handleChange}
-            ></DesignFormInput>
-          </InputContainer>
-          <InputContainer>
             <DesignInputTitle>Website Purpose</DesignInputTitle>
             <DesignFormInput
               name="websitePurpose"
@@ -148,14 +130,36 @@ const WireframeForm = () => {
             ></DesignFormInput>
           </InputContainer>
           <InputContainer>
-            <DesignInputTitle>Design Style</DesignInputTitle>
+            <DesignInputTitle>Other Features</DesignInputTitle>
             <DesignFormInput
               name="designStyle"
-              placeholder="Style..."
+              placeholder="Other Features..."
               type="text"
               value={designStyle}
               onChange={handleChange}
             ></DesignFormInput>
+          <ColorInputContainer>
+          <InputContainer>
+            <DesignInputTitle>Primary Color</DesignInputTitle>
+            <ColorFormInput
+              name="primaryColor"
+              placeholder="Primary Color..."
+              type="color"
+              value={primaryColor}
+              onChange={handleChange}
+            ></ColorFormInput>
+          </InputContainer>
+          <InputContainer>
+            <DesignInputTitle>Secondary Color</DesignInputTitle>
+            <ColorFormInput
+              name="secondaryColor"
+              placeholder="Secondary Color..."
+              type="color"
+              value={secondaryColor}
+              onChange={handleChange}
+            ></ColorFormInput>
+          </InputContainer>
+          </ColorInputContainer>
           </InputContainer>
 
           {loading ? (

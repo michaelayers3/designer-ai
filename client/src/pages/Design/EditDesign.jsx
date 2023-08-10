@@ -3,33 +3,41 @@ import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
-import Footer from "../../components/Footer"
+import Footer from "../../components/Footer";
 import Header from "../../components/Header";
 import CodeDisplay from "../../components/CodeDisplay/CodeDisplay";
 
 import Auth from "../../utils/auth";
-import { QUERY_SINGLE_WIREFRAME, QUERY_USER, QUERY_ME } from "../../utils/queries"; 
+import { QUERY_SINGLE_WIREFRAME, QUERY_USER, QUERY_ME } from "../../utils/queries";
 import {
+  BackArrow,
   DesignContainer,
   DesignDetailsContainer,
   DesignTitle,
+  Space,
 } from "./DesignStyle";
 
 const SingleWireframe = () => {
   const { wireframeId } = useParams();
 
-  const { loading: wireframeLoading, data: wireframeData } = useQuery(QUERY_SINGLE_WIREFRAME, {
-    variables: { wireframeId: wireframeId },
-  });
+  const { loading: wireframeLoading, data: wireframeData } = useQuery(
+    QUERY_SINGLE_WIREFRAME,
+    {
+      variables: { wireframeId: wireframeId },
+    }
+  );
 
   const wireframe = wireframeData?.wireframe || {};
   console.log("wireframe title", wireframe.websiteTitle);
 
   const { username: userParam } = useParams();
 
-  const { loading: userLoading, data: userData } = useQuery(userParam ? QUERY_USER : QUERY_ME, {
-    variables: { username: userParam },
-  });
+  const { loading: userLoading, data: userData } = useQuery(
+    userParam ? QUERY_USER : QUERY_ME,
+    {
+      variables: { username: userParam },
+    }
+  );
 
   const user = userData?.me || userData?.user || {};
 
@@ -50,12 +58,17 @@ const SingleWireframe = () => {
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
-          <Link to={`/me/`}>All Designs</Link>
-          <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
+          <DesignTitle>
+            <BackArrow to={"/me/"}>
+              <i class="fa fa-arrow-left" aria-hidden="true"></i>
+            </BackArrow>
+              {wireframe.websiteTitle}
+              <Space/>
+          </DesignTitle>
           <CodeDisplay code={wireframe.apiResponseText || " "} />
         </DesignDetailsContainer>
       </DesignContainer>
-      <Footer/>
+      <Footer />
     </>
   );
 };

@@ -11,7 +11,7 @@ import Auth from "../../utils/auth"
 import {
   DesignContainer,
   DesignDetailsContainer,
-  DesignTitle,
+  NewDesignTitle,
 } from "./DesignStyle";
 
 const NewWireframeForm = () => {
@@ -40,7 +40,7 @@ const NewWireframeForm = () => {
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
-          <DesignTitle>Create Your Design</DesignTitle>
+          <NewDesignTitle>Create Your Design</NewDesignTitle>
             <WireframeForm />
         </DesignDetailsContainer>
       </DesignContainer>
