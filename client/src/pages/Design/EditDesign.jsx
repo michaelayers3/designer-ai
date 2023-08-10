@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import { Navigate, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 
@@ -7,7 +7,7 @@ import Header from "../../components/Header";
 import CodeDisplay from "../../components/CodeDisplay/CodeDisplay";
 
 import Auth from "../../utils/auth";
-import { QUERY_SINGLE_WIREFRAME, QUERY_USER, QUERY_ME } from "../../utils/queries"; // Make sure to import QUERY_USER and QUERY_ME
+import { QUERY_SINGLE_WIREFRAME, QUERY_USER, QUERY_ME } from "../../utils/queries"; 
 import {
   DesignContainer,
   DesignDetailsContainer,
@@ -49,6 +49,7 @@ const SingleWireframe = () => {
       <Header />
       <DesignContainer>
         <DesignDetailsContainer>
+          <Link to={`/me/`}>All Designs</Link>
           <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
           <CodeDisplay code={wireframe.apiResponseText || " "} />
         </DesignDetailsContainer>

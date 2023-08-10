@@ -1,7 +1,7 @@
 import React from "react";
-import { useMutation } from "@apollo/client";
+import { useMutation, useQuery} from "@apollo/client";
 import { REMOVE_WIREFRAME } from "../../utils/mutations";
-
+import { QUERY_WIREFRAMES, QUERY_ME } from "../../utils/queries";
 import {
   DesignContainer,
   DesignTitle,
@@ -13,17 +13,26 @@ import "./DesignListCSS.css";
 const WireframeList = ({ wireframes, showTitle }) => {
 
   const [removeWireframe] = useMutation(REMOVE_WIREFRAME);
+  const { data: userData,  refetch: refetchUser } = useQuery(QUERY_ME);
 
   const handleDelete = async (wireframeId) => {
+    console.log('handleDelete called with wireframeId:', wireframeId);
+
     try {
       await removeWireframe({
         variables: { wireframeId },
-        refetchQueries: [{query:'QUERY_WIREFRAMES'}]
+        // refetchQueries: [{ query: QUERY_WIREFRAMES }],
       });
+
+      // Manually refetch the data to update the UI
+      refetchUser();
     } catch (error) {
       console.error('Error deleting wireframe:', error);
     }
   };
+  
+  
+
 
   if (!wireframes.length) {
     return <h3>No Designs Yet</h3>;
@@ -31,14 +40,22 @@ const WireframeList = ({ wireframes, showTitle }) => {
 
   return (
     <>
-      {showTitle && <h3>{wireframes.websiteTitle}</h3>}
+      {showTitle && <h3>{wireframes[0].websiteTitle}</h3>}
       {wireframes &&
-        wireframes.map((wireframes) => (
-          <DesignContainer className="image-wrapper" key={wireframes._id}>
-            <DesignTitle>{wireframes.websiteTitle}</DesignTitle>
+        wireframes
+        .slice()
+        .reverse()
+        .map((wireframe) => (
+          <DesignContainer className="image-wrapper" key={wireframe._id}>
+            <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
             <LinkContainer className="details">
-                <LinkButton to={`/wireframes/${wireframes._id}`}>View </LinkButton>
-                <LinkButton onClick={() => handleDelete(wireframes._id)}>Delete</LinkButton>
+                <LinkButton to={`/wireframes/${wireframe._id}`}>View </LinkButton>
+                <LinkButton onClick={() => {
+                  if(window.confirm('Are you sure you want to delete this wireframe?')) {
+                    handleDelete(wireframe._id);
+                  }
+                }}>Delete
+                </LinkButton>
             </LinkContainer>
           </DesignContainer>
         ))}
