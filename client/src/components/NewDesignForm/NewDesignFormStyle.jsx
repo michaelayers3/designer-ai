@@ -23,10 +23,14 @@ export const DesignFormInput = styled.input`
   border: 5px solid ${colors.dark};
   width: 60vw;
   outline: none;
-  border-radius: 100px;
+  border-radius: 15px;
   padding: 15px;
   color: ${colors.dark};
   font-size: 2rem;
+
+  &:focus {
+    border: 5px solid ${colors.jet};
+  }
 `;
 
 export const DesignInputTitle = styled.h4`

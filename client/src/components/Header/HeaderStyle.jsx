@@ -18,12 +18,14 @@ export const HeaderTitleContainer = styled.div`
 `;
 
 export const HeaderTitle = styled(Link)`
-  color: black;
-  font-size: 6rem;
+  color: ${colors.jet};
+  font-size: 5rem;
+  letter-spacing: 0.4rem;
+  font-weight: bold;
 
   &:hover {
     text-decoration: none;
-    color: ${colors.dark};
+    color: ${colors.lightest};
   }
 
   @media (max-width: 768px) {

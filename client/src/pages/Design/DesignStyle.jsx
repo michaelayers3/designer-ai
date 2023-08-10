@@ -22,9 +22,10 @@ export const DesignDetailsContainer = styled.div`
   justify-contents: center;
   align-items: center;
   background-color: ${colors.light};
-  border-radius: 100px;
+  border-radius: 15px;
   padding: 25px;
   width: 90vw;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
 `;
 
 export const DesignCodeContainer = styled.div`
