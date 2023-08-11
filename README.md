@@ -22,4 +22,7 @@ Michael Ayers, Josh Davis, Carly Davis, and Kyle Jones.
 This project is licensed under the MIT License. This license allows you to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the software without restriction, as long as the original copyright notice and license terms are included. For more information,please see the full text of the MIT License.(https://opensource.org/licenses/MIT).
 
 ## Resources
-  - [Github](https://github.com/jmichaeldavis/remind-me)
+  - [Github](https://github.com/michaelayers3/project-3)
+  - [Open AI](https://openai.com/blog/chatgpt)
+  - [Styled Components](https://styled-components.com/)
+  - [Node JS](https://nodejs.org/en)
