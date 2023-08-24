@@ -156,3 +156,7 @@ TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
     transition-delay: 0.1s;
     visibility: visible;
 }
+
+.sidebar-open {
+    overflow: hidden;
+}

@@ -29,6 +29,11 @@ const Home = () => {
     Auth.logout();
   };
 
+  const handleBack = () => {
+    setShowLogin(false);
+    setShowSignup(false);
+  };
+
   return (
     <>
       <LandingPage>
@@ -72,10 +77,23 @@ const Home = () => {
                   </>
                 )}
                 {/* Display the Login component when the Login button is clicked */}
-                {showLogin && <Login />}
-
+                {showLogin &&  <Login />}
+                
+                {/* (
+                <div>
+                  <button onClick = {handleBack}>Back</button>
+                  <Login />
+                  </div>
+                )} */}
                 {/* Display the Signup component when the Sign Up button is clicked */}
                 {showSignup && <Signup />}
+                
+                {/* // (
+                // <div>
+                //    <button onClick = {handleBack}>Back</button>
+                //    <Signup />
+                //    </div>
+                // )} */}
               </>
             )}
           </LoginSectionContainer>

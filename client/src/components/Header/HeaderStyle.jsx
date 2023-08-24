@@ -43,6 +43,20 @@ export const MenuTitle = styled.div`
   right: 80px;
   width: 400px;
   height: 200px;
+
+  @media (max-width: 768px) {
+    align-items: center;
+    width: 450px;
+    font-size: 3rem;
+  }
+`;
+export const UserName = styled.h1`
+
+
+  @media (max-width: 768px) {
+    font-size: 3.5rem;
+    width: 150px;
+  }
 `;
 
 export const LogoutButton = styled.h2`
@@ -52,6 +66,11 @@ export const LogoutButton = styled.h2`
   &:hover {
     color: ${colors.lightest};
     cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    align-items: center;
+    font-size: 1.5rem;
   }
 `;
 
@@ -63,6 +82,10 @@ export const ButtonContainer = styled.div`
   top: 60px;
   right: 40px;
   margin-top: 7rem;
+
+  @media (max-width: 768px) {
+   padding-top: rem;
+  }
 `;
 
 export const MenuButtons = styled(Link)`

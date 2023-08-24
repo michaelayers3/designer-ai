@@ -49,7 +49,7 @@ const WireframeList = ({ wireframes, showTitle }) => {
           <DesignContainer className="image-wrapper" key={wireframe._id}>
             <DesignTitle>{wireframe.websiteTitle}</DesignTitle>
             <LinkContainer className="details">
-                <LinkButton to={`/wireframes/${wireframe._id}`}>View </LinkButton>
+                <LinkButton to={`/wireframes/${wireframe._id}`}>View</LinkButton>
                 <LinkButton onClick={() => {
                   if(window.confirm('Are you sure you want to delete this wireframe?')) {
                     handleDelete(wireframe._id);
