@@ -63,6 +63,7 @@ export const BackArrow = styled(Link)`
   width: 5rem;
   padding: 1rem;
   float: left;
+  
 `
 
 export const Space = styled.div`

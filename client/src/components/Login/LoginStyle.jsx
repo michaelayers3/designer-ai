@@ -45,4 +45,14 @@ export const LoginButton = styled.button`
   }
 `;
 
+export const BackArrow = styled.button`
+  color: white;
+  font-size: 3rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 1rem;
+  float: left;
+  border: none;
+`
+
 

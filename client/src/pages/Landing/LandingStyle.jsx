@@ -153,3 +153,18 @@ export const LandingSubText = styled.h2`
     display: none;
   }
 `;
+
+export const BackArrow = styled.button`
+  color: white;
+  font-size: 3rem;
+  height: 5rem;
+  width: 5rem;
+  padding: 1rem;
+  // top: 50%;
+  // left: 1rem; 
+  // transform: translateY(-50%); 
+  border: none;
+  background: none; 
+`
+
+
